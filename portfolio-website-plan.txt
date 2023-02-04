@@ -1,0 +1,104 @@
+<!-- Index page
+nav .nav-bar
+ul .nav-list
+li .nav-links
+
+div .container
+section profile-section
+image profile-picture 
+h1 .profile-title
+
+section .3-col-grid
+image .grid-items
+
+footer .social-nav-bar
+ul social-nav
+li .social-nav-link
+button .btn-cta
+-->
+
+<!-- about page
+
+nav bar the same
+
+div .container
+
+section .quote
+h1 .quote-txt
+h2 .quote-author
+
+section .2-col-grid
+
+h2 .profile
+pargraphe-description
+
+experience
+pargraphe-description
+
+skills
+pargraphe-description-list
+
+tools
+pargraphe-description
+
+conctact
+btn-download-cv
+
+footer the same
+-->
+
+<!-- 
+  work page
+
+    div .container
+    presentation-paragraph (not sure if i should have that since no experience. Could write the client brief.)
+    image-items
+    section .next-projects
+ -->
+
+ <!-- load 2 types of images to folder and named them appropriatly
+image-desktop-2000px
+tablette-image-900px
+and mobile-image-600px
+-->
+
+Site text
+Portrait photographer and Graphic designer based in montreal
+
+Site quote
+"talent is a pursued interest. Anything you're willing to practice, you can do.
+Bob ross
+
+profile
+Tischa is a problem-solver and a life-long learner. She is always challenging conventional practices to discover new approaches that work better than the old ones. She has an eye for detail and an insatiable curiosity which helps keep her abreast of new software applications. She uses her abilities to the fullest, and demonstrates accuracy, thoroughness and orderliness in performing work assignments.
+
+experience
+Adept at retouching photos to look realistic, meeting customer expectations on photo material and understanding complex customer instructions.
+
+skills
+Display flexibility in adapting to changing conditions
+
+Successfully handle multiple projects at the same time
+
+Distinguish between low and high-priority activities
+
+Develop positive working relationships
+
+Recognize the importance of quality in providing a competitive edge
+
+Display hard strong perseverance
+
+Organize effectively to achieve more significant results
+
+Successfully develop creative strategies
+
+Work closely with Creative Leads to explore and execute a project from start to finish.
+
+tools
+Adobe Photoshop, Illustrator, Indesign
+Figma
+VS Code
+Canon series
+Slack
+Wrike
+Google suite
