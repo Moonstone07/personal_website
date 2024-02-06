@@ -22,6 +22,8 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
       // keep the first accordion item open by default
       if (!currentAccordionItem.classList.contains("show")) {
           accordionContent.style.display = "none"
+      } else {
+          accordionContent.style.display = "block"
       }
       
   });
