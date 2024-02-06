@@ -39,6 +39,7 @@ let touchEndX;
 let slides = document.querySelector('.slider');
 
 slides.addEventListener('touchstart', (event) => {
+    event.preventDefault();
     touchStartX = event.changedTouches[0].screenX;
 });
 
