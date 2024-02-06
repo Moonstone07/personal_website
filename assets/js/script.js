@@ -64,7 +64,6 @@ function handleSwipe() {
 
 document.addEventListener("DOMContentLoaded", function () {
     let slides = document.querySelector(".slides");
-    let slide = document.querySelector(".slide");
     let circles = document.querySelectorAll(".circle");
 
     function updateCircles(activeIndex) {
@@ -79,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function updateSlides(activeIndex) {
+    function updateSlides() {
         // Assuming you have a similar function for slides
     }
 
