@@ -47,8 +47,7 @@ slides.addEventListener('touchmove', (event) => {
     touchEndX = event.changedTouches[0].screenX;
 });
 
-slides.addEventListener('touchend', (event) => {
-    event.preventDefault();
+slides.addEventListener('touchend', () => {
     handleSwipe();
 });
 
