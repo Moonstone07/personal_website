@@ -20,13 +20,12 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
       }
 
       // keep the first accordion item open by default
-      if (!currentAccordionItem.classList.contains("show")) {
-          accordionContent.style.display = "none"
-      } else if (currentAccordionItem.classList.contains("show")) {
-          accordionContent.style.display = "block"
-      }else {
-          accordionContent.style.display = "none"
-      }
+      document.querySelectorAll(".accordion_item").forEach((item) => {
+          if (item !== currentAccordionItem) {
+              item.classList.remove("show");
+              item.querySelector(".accordion_content").style.display = "none";
+          }
+      });
       
   });
 });
