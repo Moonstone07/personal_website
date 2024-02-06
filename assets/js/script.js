@@ -21,7 +21,7 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
 
       // keep the first accordion item open by default
       document.querySelectorAll(".accordion_item").forEach((item) => {
-          if (item !== currentAccordionItem) {
+          if (item !== currentAccordionItem && item.classList.contains("show")) {
               item.classList.remove("show");
               item.querySelector(".accordion_content").style.display = "none";
           }
