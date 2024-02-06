@@ -167,12 +167,12 @@ body {
     color: var(--primary_text_color);
     background-color: var(--primary_color);
     font-family: 'Manrope', sans-serif;
+    /* overflow: scroll; */
 }
 
-
 section {
-    margin-inline: auto;
-    padding-inline: var(--padding_large);
+    margin: 0 auto;
+    padding: var(--padding_large);
 }
 
 h2 {
@@ -204,26 +204,21 @@ p {
     left: 0;
     right: 0;
     z-index: 100;
-
 }
+
 
 /* hero section */
 
 #intro {
-    width: 100%;
     height: 100vh;
-    padding: 0;
     margin-bottom: var(--margin_large);
-}
-
-.intro_image_wrapper {
-    overflow: hidden;
     position: relative;
-    z-index: -1;
-    margin-bottom: var(--margin_xlarge);
+    margin: 0;
+    padding: 0;
 }
 
 .intro_image_wrapper img {
+    width: 100vw;
     height: 100vh;
     object-fit: cover;
 }
@@ -250,16 +245,11 @@ p {
     padding: var(--padding_large);
     position: absolute;
     bottom: 10%;
-    left: 38%;
+    left: 30%;
     z-index: 10;
 }
 
-
-/* about */
-
 .about_text_wrapper {
-    width: 24rem;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -282,7 +272,6 @@ p {
     letter-spacing: 0.18rem;
     margin-top: var(--margin_small);
 }
-
 
 /* Accordion */
 
@@ -397,7 +386,6 @@ p {
     gap: 10px;
 }
 
-
 .circle {
     width: 20px;
     height: 20px;
@@ -410,8 +398,6 @@ p {
     opacity: 1;
     background: var(--accent_color_active);
 }
-
-
 
 /* footer */
 
@@ -485,7 +471,7 @@ footer {
 
     .about_text_wrapper {
         width: 40rem;
-        }
+    }
 
     .about_text_wrapper h4 {
         font-size: 8rem;
