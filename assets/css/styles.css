@@ -103,7 +103,6 @@ a {
     --secondary_text_color: #FFFFFF;
     --accent_color_active: #F7572D;
     --accent_color_inactive: #f7552dae;
-    --accent_color_focus: ;
 
 
     /* heading font-size */
@@ -130,20 +129,10 @@ a {
     --preferred-extra-giga-font-size: 6vw;
     --max-extra-giga-font-size: 6rem;
 
-    --min-mega-font-size: 3.5rem;
-    --preferred-mega-font-size: 4.375vw;
-    --max-mega-font-size: 4.375rem;
-
     --min-kilo-font-size: 3rem;
     --preferred-kilo-font-size: 3.75vw;
     --max-kilo-font-size: 3.75rem;
 
-    --br-1: 0.5em;
-    --br-2: 0.75em;
-    --br-3: 1em;
-    --br-4: 1.25em;
-    --br-5: 1.5em;
-    --br-6: 1.75em;
 
     --padding_small: 0.5em;
     --padding_medium: 1em;
@@ -163,11 +152,10 @@ a {
 }
 
 body {
-    font-size: var(--preferred-font-size);
+    font-size: 1em;
     color: var(--primary_text_color);
     background-color: var(--primary_color);
     font-family: 'Manrope', sans-serif;
-    /* overflow: scroll; */
 }
 
 section {
@@ -442,7 +430,6 @@ footer {
 
 @media screen and (min-width: 1024px) {
 
-
     main {
         padding: var(--padding_large);
     }
@@ -472,7 +459,6 @@ footer {
         font-size: 8rem;
     }
 
-
     .accordion_item {
         flex-direction: row;
         align-items: flex-start;
@@ -486,7 +472,6 @@ footer {
     }
 
     .accordion_img {
-        max-width: none;
         margin-top: 0;
         margin-left: 15px;
     }
