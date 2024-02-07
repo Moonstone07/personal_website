@@ -31,25 +31,69 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
 // RESUME SLIDER
 
 // touch events for mobile devices
+let slides;
 
-slides.addEventListener("touchstart", (e) => {
-  let touchStartX = e.changedTouches[0].screenX;
-});
+if (window.matchMedia("(pointer: coarse)").matches) {
+  slides.addEventListener("touchstart", (e) => {
+    let touchStartX = e.changedTouches[0].screenX;
+  });
 
-slides.addEventListener("touchmove", (e) => {
-  let touchEndX = e.changedTouches[0].screenX;
-});
+  slides.addEventListener("touchmove", (e) => {
+    let touchEndX = e.changedTouches[0].screenX;
+  });
 
-slides.addEventListener("touchend", (e) => {
-  handleSwipe();
-});
+  slides.addEventListener("touchend", (e) => {
+    handleSwipe();
+  });
 
-function handleSwipe() {
-  if (touchEndX < touchStartX) {
-    slides.scrollBy({ left: slides.clientWidth, behavior: "smooth" });
+  function handleSwipe() {
+    if (touchEndX < touchStartX) {
+      slides.scrollBy({ left: slides.clientWidth, behavior: "smooth" });
+    }
+    if (touchEndX > touchStartX) {
+      slides.scrollBy({ left: -slides.clientWidth, behavior: "smooth" });
+    }
   }
-  if (touchEndX > touchStartX) {
-    slides.scrollBy({ left: -slides.clientWidth, behavior: "smooth" });
-  }
+} else {
+  // Desktop slider
+
+  document.addEventListener("DOMContentLoaded", function () {
+    slides = document.querySelector(".slides");
+    let circles = document.querySelectorAll(".circle");
+
+    function updateCircles(activeIndex) {
+      circles.forEach((circle, index) => {
+        if (index === activeIndex) {
+          circle.style.opacity = "1";
+          circle.classList.add("active");
+        } else {
+          circle.style.opacity = "0.5";
+          circle.classList.remove("active");
+        }
+      });
+    }
+
+    // set the first circle as active when the page loads
+    updateCircles(0);
+
+    slides.addEventListener("scroll", function () {
+      let scrollPosition = slides.scrollLeft;
+      let slideWidth = slides.clientWidth;
+      let activeIndex = Math.round(scrollPosition / slideWidth);
+
+      updateCircles(activeIndex);
+    });
+
+    circles.forEach((circle, index) => {
+      circle.addEventListener("click", function () {
+        updateCircles(index);
+
+        let slideWidth = slides.clientWidth;
+        slides.scroll({
+          left: index * slideWidth,
+          behavior: "smooth",
+        });
+      });
+    });
+  });
 }
-// CIRCLES
