@@ -304,11 +304,6 @@ p {
     border-bottom: 1px solid #ddd;
 }
 
-.accordion_title::after {
-    content: '\02795';
-    font-size: clamp(var(--min-heading-font-size), var(--preferred-heading-font-size), var(--max-heading-font-size));
-    color: var(--secondary_text_color, #FFF);
-}
 
 .accordion_text {
     padding: var(--padding_small) 0;
