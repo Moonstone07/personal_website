@@ -31,51 +31,52 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
 // RESUME SLIDER
 
 // touch events for mobile devices
-let slides;
+let slides, circles;
 
-if (window.matchMedia("(pointer: coarse)").matches) {
-  slides.addEventListener("touchstart", (e) => {
-    let touchStartX = e.changedTouches[0].screenX;
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  slides = document.querySelector(".slides");
+  circles = document.querySelectorAll(".circle");
 
-  slides.addEventListener("touchmove", (e) => {
-    let touchEndX = e.changedTouches[0].screenX;
-  });
-
-  slides.addEventListener("touchend", (e) => {
-    handleSwipe();
-  });
-
-  function handleSwipe() {
-    if (touchEndX < touchStartX) {
-      slides.scrollBy({ left: slides.clientWidth, behavior: "smooth" });
-    }
-    if (touchEndX > touchStartX) {
-      slides.scrollBy({ left: -slides.clientWidth, behavior: "smooth" });
-    }
+  function updateCircles(activeIndex) {
+    circles.forEach((circle, index) => {
+      if (index === activeIndex) {
+        circle.style.opacity = "1";
+        circle.classList.add("active");
+      } else {
+        circle.style.opacity = "0.5";
+        circle.classList.remove("active");
+      }
+    });
   }
-} else {
-  // Desktop slider
 
-  document.addEventListener("DOMContentLoaded", function () {
-    slides = document.querySelector(".slides");
-    let circles = document.querySelectorAll(".circle");
+  // set the first circle as active when the page loads
+  updateCircles(0);
 
-    function updateCircles(activeIndex) {
-      circles.forEach((circle, index) => {
-        if (index === activeIndex) {
-          circle.style.opacity = "1";
-          circle.classList.add("active");
-        } else {
-          circle.style.opacity = "0.5";
-          circle.classList.remove("active");
-        }
-      });
-    }
+  if (window.matchMedia("(pointer: coarse)").matches) {
+    // touch events for mobile devices
+    let touchStartX, touchEndX;
+    let activeIndex = 0;
 
-    // set the first circle as active when the page loads
-    updateCircles(0);
+    slides.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
 
+    slides.addEventListener("touchmove", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+    });
+
+    slides.addEventListener("touchend", (e) => {
+      if (touchEndX < touchStartX) {
+        activeIndex++;
+      }
+      if (touchEndX > touchStartX) {
+        activeIndex--;
+      }
+      activeIndex = Math.max(0, Math.min(activeIndex, circles.length - 1)); // ensure activeIndex is within bounds
+      updateCircles(activeIndex);
+    });
+  } else {
+    // Desktop slider
     slides.addEventListener("scroll", function () {
       let scrollPosition = slides.scrollLeft;
       let slideWidth = slides.clientWidth;
@@ -95,5 +96,5 @@ if (window.matchMedia("(pointer: coarse)").matches) {
         });
       });
     });
-  });
-}
+  }
+});
