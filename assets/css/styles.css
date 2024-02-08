@@ -181,7 +181,8 @@ p {
     font-family: Manrope;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.8125rem;
+    line-height: 1.5;
+    margin-bottom: var(--margin_medium);
 }
 
 /* Menu */
@@ -190,7 +191,6 @@ p {
     justify-content: end;
     align-items: center;
     padding: var(--padding_medium);
-    /* backdrop-filter: blur(10px); */
     position: fixed;
     top: 0;
     left: 0;
@@ -245,8 +245,7 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: var(--gap_large);
-    margin-bottom: var(--margin_xlarge);
+    gap: var(--gap_medium);
 }
 
 
@@ -328,8 +327,8 @@ p {
 }
 
 .slide {
-    flex: 0 0 auto;
-    width: 100%;
+    flex: 1 0 auto;
+    width: 22rem;
     scroll-snap-align: start;
     padding: var(--padding_xlarge);
     margin-bottom: var(--margin_xlarge);
@@ -337,14 +336,14 @@ p {
 
 .slide h3 {
     font-size: clamp(var(--min-heading-font-size), var(--preferred-heading-font-size), var(--max-heading-font-size));
-    font-weight: 400;
     font-family: 'Manrope', sans-serif;
     margin-bottom: var(--margin_medium);
 }
 
 .slide h4 {
     font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
-    font-weight: 400;
+    font-weight: 600;
+    text-transform: uppercase;
     font-family: 'Manrope', sans-serif;
     margin-bottom: var(--margin_small);
 }
@@ -352,8 +351,7 @@ p {
 .slide li {
     font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
     font-weight: 300;
-    font-family: 'Manrope', sans-serif;
-    margin-bottom: var(--margin_small);
+    margin-bottom: var(--margin_medium);
 }
 
 .circles {
@@ -389,8 +387,6 @@ footer {
 .cta_text {
     font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
     font-weight: 300;
-    line-break: anywhere;
-    margin-bottom: var(--margin_small);
 }
 
 .cta {
@@ -476,6 +472,10 @@ footer {
     .slider {
         width: 70%;
         margin: 0 auto;
+    }
+
+    .slide {
+        width: 100%;
     }
 
     .slide h3 {
