@@ -104,17 +104,19 @@ a {
     --accent_color_active: #F7572D;
     --accent_color_inactive: #f7552dae;
 
-
-    /* heading font-size */
-    --min-heading-font-size: 1.5rem;
-    --preferred-heading-font-size: 2.5vw;
-    --max-heading-font-size: 2rem;
-
+    /* very small font-size */
+    --min-extra-small-font-size: 0.75rem;
+    --preferred-extra-small-font-size: 1vw;
+    --max-extra-small-font-size: 0.875rem;
     /* paragraph font-size */
     --min-text-font-size: 0.875rem;
     --preferred-text-font-size: 1.5vw;
     --max-text-font-size: 1.125rem;
 
+    /* heading font-size */
+    --min-heading-font-size: 1.5rem;
+    --preferred-heading-font-size: 2.5vw;
+    --max-heading-font-size: 2rem;
 
     /* large heading font-size */
     --min-large-font-size: 2rem;
@@ -414,7 +416,7 @@ footer {
 
 #contact div {
     text-align: center;
-    font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
+    font-size: clamp(var(--min-extra-small-font-size), var(--preferred-extra-small-font-size), var(--max-extra-small-font-size));
     margin-top: var(--margin_xlarge);
 }
 
