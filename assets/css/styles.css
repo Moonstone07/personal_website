@@ -152,6 +152,10 @@ a {
 
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-size: 1em;
     color: var(--primary_text_color);
@@ -217,7 +221,7 @@ p {
 
 .intro_text_wrapper {
     position: absolute;
-    top: 20%;
+    top: 25%;
     left: 38%;
     transform: translate(-50%, -50%);
 }
@@ -241,13 +245,13 @@ p {
     z-index: 10;
 }
 
+
 .about_text_wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: var(--gap_medium);
 }
-
 
 .about_text_wrapper h4 {
     font-size: clamp(var(--min-extra-giga-font-size), var(--preferred-extra-giga-font-size), var(--max-extra-giga-font-size));
@@ -285,12 +289,12 @@ p {
     font-size: clamp(var(--min-heading-font-size), var(--preferred-heading-font-size), var(--max-heading-font-size));
     font-weight: 600;
     border-bottom: 1px solid #ddd;
+    margin: 0;
 }
-
 
 .accordion_text {
     padding: var(--padding_small) 0;
-    font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
+    font-size: .875rem;
     text-transform: uppercase;
 }
 
@@ -424,14 +428,19 @@ footer {
 @media screen and (min-width: 1024px) {
 
     main {
-        padding: var(--padding_large);
+        max-width: 100rem;
+        margin-inline: auto;
+        padding-inline: var(--padding_xlarge);
+    }
+
+    section {
+        padding: 150px 0;
     }
 
     .intro_text_wrapper {
         width: 40rem;
-        top: 20%;
-        left: 28%;
-        transform: translate(-50%, -50%);
+        top: 22%;
+        left: 25%;
     }
 
     .intro_text_wrapper h1 {
@@ -439,9 +448,14 @@ footer {
     }
 
     .intro_skills_2_col_grid {
-        top: 40%;
-        left: 50%;
+        left: 65%;
         right: 0;
+    }
+
+    #about {
+        display: flex;
+        gap: var(--gap_xlarge);
+        margin: var(--margin_xlarge) auto;
     }
 
     .about_text_wrapper {
@@ -455,13 +469,16 @@ footer {
     .accordion_item {
         flex-direction: row;
         align-items: flex-start;
-        justify-content: center;
         gap: var(--gap_large);
     }
 
-    .accordion_title,
     .accordion_content {
-        flex: 1;
+        width: 70%;
+    }
+
+    .accordion_title {
+        cursor: pointer;
+        width: 15em;
     }
 
     .accordion_img {

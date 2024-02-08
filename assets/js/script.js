@@ -98,3 +98,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+
+// Image move
+window.addEventListener('DOMContentLoaded', (event) => {
+  // Check if it's desktop view
+  if(window.matchMedia("(min-width: 768px)").matches) {
+    // Select the image element
+    const image = document.querySelector('#intro .intro_image_wrapper');
+    // Select the about section
+    const aboutSection = document.querySelector('#about');
+    // Append the image to the about section
+    aboutSection.appendChild(image);
+  }
+});
