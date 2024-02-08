@@ -466,6 +466,10 @@ footer {
         font-size: 8rem;
     }
 
+    .intro_image_wrapper {
+        width: 50%;
+    }
+
     .accordion_item {
         flex-direction: row;
         align-items: flex-start;
