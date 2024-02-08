@@ -100,6 +100,7 @@ a {
     --primary_color: #4C0000;
     --secondary_color: #F7572D;
     --primary_text_color: #F9F7B2;
+    --secondary_text_color: #fff;
     --accent_color_active: #F7572D;
     --accent_color_inactive: #f7552dae;
 
@@ -288,7 +289,7 @@ p {
     text-align: left;
     font-size: clamp(var(--min-heading-font-size), var(--preferred-heading-font-size), var(--max-heading-font-size));
     font-weight: 600;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--secondary_text_color);
     margin: 0;
 }
 
