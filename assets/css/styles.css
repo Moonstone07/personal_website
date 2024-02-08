@@ -100,7 +100,6 @@ a {
     --primary_color: #4C0000;
     --secondary_color: #F7572D;
     --primary_text_color: #F9F7B2;
-    --secondary_text_color: #FFFFFF;
     --accent_color_active: #F7572D;
     --accent_color_inactive: #f7552dae;
 
@@ -390,6 +389,7 @@ footer {
 .cta_text {
     font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
     font-weight: 300;
+    line-break: anywhere;
     margin-bottom: var(--margin_small);
 }
 
