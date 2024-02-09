@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Image move
+// Hero Image move
 window.addEventListener('DOMContentLoaded', (event) => {
   // Check if it's desktop view
   if(window.matchMedia("(min-width: 768px)").matches) {
@@ -112,3 +112,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
     aboutSection.appendChild(image);
   }
 });
+
+// default language
+// Function to detect the user's preferred language
+    function detectUserLanguage() {
+      return navigator.language || navigator.userLanguage;
+    }
+    function redirectToLanguage() {
+      let userLang = detectUserLanguage();
+      if (userLang.startsWith('en')) {
+        window.location.href = 'en/';
+      } else {
+        // Default to the French page
+        window.location.href = 'fr/';
+      }
+    }
+    redirectToLanguage();
