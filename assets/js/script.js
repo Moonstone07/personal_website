@@ -115,16 +115,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 // default language
 // Function to detect the user's preferred language
-    function detectUserLanguage() {
-      return navigator.language || navigator.userLanguage;
-    }
-    function redirectToLanguage() {
-      let userLang = detectUserLanguage();
-      if (userLang.startsWith('en')) {
-        window.location.href = 'en/';
-      } else {
-        // Default to the French page
-        window.location.href = 'fr/';
-      }
-    }
-    redirectToLanguage();
+    // function detectUserLanguage() {
+    //   return navigator.language || navigator.userLanguage;
+    // }
+    // function redirectToLanguage() {
+    //   let userLang = detectUserLanguage();
+    //   if (userLang.startsWith('en')) {
+    //     window.location.href = 'en/';
+    //   } else {
+    //     // Default to the French page
+    //     window.location.href = 'fr/';
+    //   }
+    // }
+    // redirectToLanguage();
