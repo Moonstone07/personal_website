@@ -333,7 +333,7 @@ p {
 
 .slide {
     flex: 1 0 auto;
-    width: 22rem;
+    width: 24rem;
     scroll-snap-align: start;
     padding: var(--padding_xlarge);
     margin-bottom: var(--margin_xlarge);
