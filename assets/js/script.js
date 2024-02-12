@@ -99,8 +99,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Back to home button
-
-    document.querySelector(".back-to-home-btn").style.display = "block";
+  const backToHomeBtn = document.querySelector(".back-to-home");
+  backToHomeBtn.addEventListener("click", () => {
+    
+  })
 
 });
 
