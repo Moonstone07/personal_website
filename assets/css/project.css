@@ -167,9 +167,6 @@ body {
   padding-inline: var(--padding_xlarge);
 }
 
-section {
-  padding: var(--padding_xlarge);
-}
 
 h1 {
   font-size: clamp(var(--min-large-font-size), var(--preferred-large-font-size), var(--max-large-font-size));
