@@ -287,6 +287,20 @@ footer {
     border-bottom: none;
   }
 
+  .footer_links {
+    margin-bottom: 15rem;
+    margin-top: var(--margin_xlarge);
+  }
+
+  .footer_links ul {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--gap_large);
+  }
+
+  .footer_links ul li {
+    width: 100%;
+  }
 
   .grid {
     gap: 80px var(--gap_xlarge);
