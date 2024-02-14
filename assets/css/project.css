@@ -93,15 +93,17 @@ a {
   display: inline-block;
   color: inherit;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
+
+
 
 :root {
   --primary_color: #4C0000;
   --secondary_color: #F7572D;
   --primary_text_color: #F9F7B2;
   --secondary_text_color: #F88752;
-  --accent_color_active: #F7572D;
-  --accent_color_inactive: #f7552dae;
+
 
   /* very small font-size */
   --min-extra-small-font-size: 0.75rem;
@@ -122,20 +124,6 @@ a {
   --preferred-large-font-size: 4vw;
   --max-large-font-size: 3rem;
 
-  --min-giga-font-size: 4rem;
-  --preferred-giga-font-size: 5vw;
-  --max-giga-font-size: 5rem;
-
-  --min-extra-giga-font-size: 5rem;
-  --preferred-extra-giga-font-size: 6vw;
-  --max-extra-giga-font-size: 6rem;
-
-  --min-kilo-font-size: 3rem;
-  --preferred-kilo-font-size: 3.75vw;
-  --max-kilo-font-size: 3.75rem;
-
-
-  --padding_small: 0.5em;
   --padding_medium: 1em;
   --padding_large: 1.5em;
   --padding_xlarge: 2em;
@@ -145,13 +133,10 @@ a {
   --margin_large: 1.5em;
   --margin_xlarge: 2em;
 
-  --gap_small: 0.5em;
-  --gap_medium: 1em;
   --gap_large: 1.5em;
   --gap_xlarge: 2em;
 
   --grid-template-columns: repeat(12, minmax(0, 1fr));
-  --grid-template-rows: repeat(12, auto);
 }
 
 html {
@@ -240,6 +225,7 @@ footer {
   font-weight: 400;
   margin-bottom: var(--margin_large);
   border-bottom: #F9F7B2 1px solid;
+  transition: all 0.3s ease-in-out;
 }
 
 .footer_links ul {
@@ -262,13 +248,43 @@ footer {
   margin-top: var(--margin_xlarge);
 }
 
+.home_btn {
+  font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
+  padding: var(--padding_medium);
+}
+
 
 /* media queries */
 
 @media screen and (min-width: 1024px) {
 
   section {
+    margin: 0 auto;
     margin-bottom: 150px;
+  }
+
+  .hover_btn {
+    position: relative;
+    text-decoration: none;
+  }
+
+  .hover_btn::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--secondary_text_color);
+    transition: width .3s;
+  }
+
+  .hover_btn:hover::after {
+    width: 100%;
+  }
+
+  a.cta:hover {
+    border-bottom: none;
   }
 
 
