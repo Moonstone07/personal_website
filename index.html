@@ -13,23 +13,26 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Cormorant:300,regular" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Manrope:300,regular,600" rel="stylesheet" />
+
+    <!-- Locomotive Scroll -->
+    <script src="https://unpkg.com/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 </head>
 
 <body>
-    <main>
-        <header>
-            <nav id="main_nav">
-                <ul>
-                    <li><a href="#about">à propos</a></li>
-                    <li><a href="#projects">projets</a></li>
-                    <li><a href="#contact">contact</a></li>
-                    <li><a href="/en/">Eng</a></li>
-                </ul>
-            </nav>
-        </header>
+    <header >
+        <nav id="main_nav">
+            <ul>
+                <li><a href="#about">à propos</a></li>
+                <li><a href="#projects">projets</a></li>
+                <li><a href="#contact">contact</a></li>
+                <li><a href="/en/">Eng</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main data-scroll-container>
 
-        <section id="intro">
-            <div class="intro_image_wrapper">
+        <section id="intro" class="scroll_animation fade_in_right">
+            <div class="intro_image_wrapper ">
                 <img src="assets/images/tischa.jpg" alt="Tischa Francis">
             </div>
 
@@ -57,7 +60,7 @@
 
         </section>
 
-        <section id="about">
+        <section id="about" class="scroll_animation fade_up">
             <div class="about_text_wrapper">
                 <h2>à propos</h2>
                 <p class="about_text">Je suis une artiste du web qui jongle entre le monde des pixels et celui de la créativité. Je mélange le design
@@ -71,7 +74,7 @@
 
         </section>
 
-        <section id="projects">
+        <section id="projects" class="scroll_animation fade_in_left">
             <div class="accordion_item show">
                 <div class="accordion_info">
                     <p class="accordion_title">Page d&apos;hommage à Sade <span>+</span></p>
@@ -93,7 +96,7 @@
             </div>
         </section>
 
-        <section id="resume">
+        <section id="resume" class="scroll_animation fade_in">
             <h2>expériences</h2>
             <div class="slider">
                 <div class="slides">
@@ -132,7 +135,7 @@
             </div>
         </section>
 
-        <footer id="contact">
+        <footer id="contact" class="scroll_animation slide_up">
             <h2>contact</h2>
             <p class="outro_text">Prêt à faire briller ta présence en ligne ? Laisse-moi t'accompagner dans ton prochain projet.<br> Ensemble, nous
             transformerons ta vision en une réalité captivante.
