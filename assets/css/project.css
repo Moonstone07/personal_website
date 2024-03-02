@@ -139,8 +139,14 @@ a {
   --grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
-html {
+html,
+body {
+  height: 100%;
   scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -253,6 +259,40 @@ footer {
   padding: var(--padding_medium);
 }
 
+/* Scroll animation */
+.fade_in_right,
+.fade_in_left,
+.fade_in,
+.slide_up,
+.fade_up {
+  opacity: 0;
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+}
+
+.fade_in_right {
+  transform: translateX(100px);
+}
+
+.fade_in_left {
+  transform: translateX(-100px);
+}
+
+.fade_in {
+  transform: translateY(100px);
+}
+
+.slide_up {
+  transform: translateY(100px);
+}
+
+.fade_up {
+  transform: translateY(100px);
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 /* media queries */
 

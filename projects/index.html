@@ -11,22 +11,25 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Cormorant:300,regular,600" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Manrope:300,regular,600" rel="stylesheet" />
+
+    <!-- Locomotive Scroll -->
+    <script src="https://unpkg.com/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 </head>
 
 <body>
-    <main>
-        <header>
-            <nav id="main_nav">
-                <ul>
-                    <li><a href="#about">à propos</a></li>
-                    <li><a href="#projects">projets</a></li>
-                    <li><a href="#contact">contact</a></li>
-                    <li><a href="/en/">Eng</a></li>
-                </ul>
-            </nav>
-        </header>
+    <header>
+        <nav id="main_nav">
+            <ul>
+                <li><a href="#about">à propos</a></li>
+                <li><a href="#projects">projets</a></li>
+                <li><a href="#contact">contact</a></li>
+                <li><a href="/en/">Eng</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main data-scroll-container>
 
-        <section class="hero_banner">
+        <section class="hero_banner scroll_animation fade_in_right">
             <div class="grid grid_col_12 hero_txt">
                 <h1 class="col_span_8">AudioSphere</h1>
                 <p class="col_span_3">Application de podcast</p>
@@ -34,7 +37,7 @@
             <figure><img src="/assets/images/podcast_page.jpg" alt="" /></figure>
         </section>
 
-        <section class="intro_section grid grid_col_10">
+        <section class="intro_section grid grid_col_10 scroll_animation fade_in">
             <div class="col_span_4">
                 <h2>Projet</h2>
                 <p>
@@ -95,7 +98,7 @@
             </div>
         </section>
 
-        <section class="intro_section grid grid_col_4">
+        <section class="intro_section grid grid_col_4 scroll_animation fade_in_left">
             <div class="col_span_2">
                 <img src="/assets/images/login_page_mobile.jpeg" alt="" />
                 <img src="/assets/images/category_page_mobile.jpeg" alt="" />
@@ -106,7 +109,7 @@
             </div>
         </section>
 
-        <section class="objectif_section grid grid_col_8">
+        <section class="objectif_section grid grid_col_8 scroll_animation fade_up">
             <div class="col_span_4">
                 <h2>Objectifs</h2>
                 <p>
@@ -122,7 +125,7 @@
             </div>
         </section>
 
-        <section class="team_section grid grid_col_10">
+        <section class="team_section grid grid_col_10 scroll_animation slide_up">
             <div class="col_span_6">
                 <img src="/assets/images/category_search_page_desktop.jpeg" alt="" />
             </div>
@@ -159,7 +162,7 @@
             </div>
         </section>
 
-        <section class="plan_section grid grid_col_6">
+        <section class="plan_section grid grid_col_6 scroll_animation fade_in">
             <div class="col_span_6">
                 <h2>Planification</h2>
             </div>
@@ -177,7 +180,7 @@
             </div>
         </section>
 
-        <section class="conclusion_section grid grid_col_12">
+        <section class="conclusion_section grid grid_col_12 scroll_animation fade_in_right">
             <div class="col_span_8">
                 <h2>Conclusion</h2>
                 <h3>Caractéristiques et fonctionnalités:</h3>
@@ -231,12 +234,12 @@
             </div>
         </section>
 
-        <div class="grid grid_col_2">
+        <div class="grid grid_col_2 scroll_animation fade_in_left">
             <img src="/assets/images/category_page_mockup_desktop.jpeg" alt="" />
             <img src="/assets/images/music_player_mockup_desktop.jpg" alt="" />
         </div>
 
-        <section class="conclusion_section grid grid_col_8">
+        <section class="conclusion_section grid grid_col_8 scroll_animation fade_in">
             <div class="col_span_8">
                 <h3>Défis et solutions :</h3>
             </div>
@@ -285,27 +288,29 @@
             </div>
         </section>
 
-                <a href="https://tischa79.web582.com/ui-ux/audiosphere-v2/views/view-homesliders.php" class="hover_btn" target="_blank" rel="noopener noreferrer">Visiter l&apos;application</a>
+        <a href="https://tischa79.web582.com/ui-ux/audiosphere-v2/views/view-homesliders.php" class="hover_btn"
+            target="_blank" rel="noopener noreferrer">Visiter l&apos;application</a>
 
-                <footer id="contact">
-                    <h2>contact</h2>
-                    <p class="cta_text">Disponible pour des projets freelance et des collaborations.</p>
-                    <a href="mailto:tischa.francis@outlook.com" class="cta hover_btn">communiqué</a>
-                    <nav class="footer_links">
-                        <ul>
-                            <li><a href="https://github.com/Moonstone07">github</a></li>
-                            <li><a href="https://www.linkedin.com/in/tischa-francis/">linkedin</a></li>
-                            <li><a href="https://www.behance.net/tischafrancis">behance</a></li>
-                        </ul>
-                    </nav>
-                
-                    <div>&copy; 2023 Tischa. Tous droits réservés. Mon bébé virtuel, créé avec amour pour me payer un voyage! lol</div>
-                </footer>
+        <footer id="contact" class="scroll_animation slide_up">
+            <h2>contact</h2>
+            <p class="cta_text">Disponible pour des projets freelance et des collaborations.</p>
+            <a href="mailto:tischa.francis@outlook.com" class="cta hover_btn">communiqué</a>
+            <nav class="footer_links">
+                <ul>
+                    <li><a href="https://github.com/Moonstone07">github</a></li>
+                    <li><a href="https://www.linkedin.com/in/tischa-francis/">linkedin</a></li>
+                    <li><a href="https://www.behance.net/tischafrancis">behance</a></li>
+                </ul>
+            </nav>
+
+            <div>&copy; 2023 Tischa. Tous droits réservés. Mon bébé virtuel, créé avec amour pour me payer un voyage!
+                lol</div>
+        </footer>
 
 
         <div class="home_btn"><a href="/" class="back-to-home-btn hover_btn">retour</a></div>
 
-        
+        <script src="/assets/js/script.js"></script>
     </main>
 </body>
 
