@@ -149,11 +149,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
-// Locomotive Scroll
 
-// const scroll = new LocomotiveScroll({
-//   el: document.querySelector("[data-scroll-container]"),
-//   smooth: true,
-//   smoothMobile: true,
-//   inertia: 0.3,
-// })

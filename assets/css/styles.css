@@ -432,7 +432,6 @@ footer {
 }
 
 /* Scroll animation */
-/* Initial state for all elements */
 .fade_in_right,
 .fade_in_left,
 .fade_in,
@@ -463,7 +462,6 @@ footer {
 }
 
 .show {
-    /* Final state of the elements after animation */
     opacity: 1;
     transform: translateX(0);
 }
