@@ -266,7 +266,7 @@ footer {
 .slide_up,
 .fade_up {
   opacity: 0;
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
 }
 
 .fade_in_right {
@@ -299,8 +299,8 @@ footer {
 @media screen and (min-width: 1024px) {
 
   section {
-    margin: 0 auto;
-    margin-bottom: 150px;
+    padding: var(--padding_xlarge) 0;
+    margin-bottom: 500px;
   }
 
   .hover_btn {
