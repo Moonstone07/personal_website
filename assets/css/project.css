@@ -231,7 +231,6 @@ footer {
   font-weight: 400;
   margin-bottom: var(--margin_large);
   border-bottom: #F9F7B2 1px solid;
-  transition: all 0.3s ease-in-out;
 }
 
 .footer_links ul {
