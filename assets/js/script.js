@@ -1,3 +1,6 @@
+console.log("hello world");
+
+
 // ARCCODION
 
 document.querySelectorAll(".accordion_info").forEach((item) => {

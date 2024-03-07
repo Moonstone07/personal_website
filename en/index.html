@@ -13,23 +13,26 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Cormorant:300,regular" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Manrope:300,regular,600" rel="stylesheet" />
+
+    <!-- Locomotive Scroll -->
+    <script src="https://unpkg.com/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 </head>
 
 <body>
-    <main>
-        <header>
-            <nav id="main_nav">
-                <ul>
-                    <li><a href="#about">about</a></li>
-                    <li><a href="#projects">work</a></li>
-                    <li><a href="#contact">contact</a></li>
-                    <li><a href="/fr/">Fr</a></li>
+    <header>
+        <nav id="main_nav">
+            <ul>
+                <li><a href="#about">about</a></li>
+                <li><a href="#projects">work</a></li>
+                <li><a href="#contact">contact</a></li>
+                <li><a href="/fr/">Fr</a></li>
 
-                </ul>
-            </nav>
-        </header>
+            </ul>
+        </nav>
+    </header>
+    <main data-scroll-container>
 
-        <section id="intro">
+        <section id="intro" class="scroll_animation fade_in">
             <div class="intro_image_wrapper">
                 <img src="/assets/images/tischa.jpg" alt="Tischa Francis">
             </div>
@@ -58,7 +61,7 @@
 
         </section>
 
-        <section id="about">
+        <section id="about" class="scroll_animation fade_up">
             <div class="about_text_wrapper">
                 <h2>about</h2>
                 <p class="about_text">Exploring the intersection of print design and digital landscapes, I'm a creator
@@ -75,7 +78,7 @@
 
         </section>
 
-        <section id="projects">
+        <section id="projects" class="scroll_animation fade_in_left">
             <div class="accordion_item show">
                 <div class="accordion_info">
                     <p class="accordion_title">Sade tribute page <span>+</span></p>
@@ -93,14 +96,14 @@
                     <p class="accordion_text">web design, ui/ux, branding, font-end development</p>
                 </div>
                 <div class="accordion_content">
-                    <a href="/en/projects/"><img src="/assets/images/podcast_page.jpeg" alt="Image 2"
+                    <a href="/en/projects/"><img src="../assets/images/podcast_page.jpg" alt="Image 2"
                             class="accordion_img" loading="lazy"></a>
 
                 </div>
             </div>
         </section>
 
-        <section id="resume">
+        <section id="resume" class="scroll_animation fade_in">
             <h2>experiences</h2>
             <div class="slider">
                 <div class="slides">
@@ -138,7 +141,7 @@
             </div>
         </section>
 
-        <footer id="contact">
+        <footer id="contact" class="scroll_animation slide_up">
             <h2>contact</h2>
             <p class="outro_text">Ready to elevate your digital presence? Let's collaborate on your next project.<br>
             <p class="outro_text">

@@ -11,97 +11,266 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Cormorant:300,regular,600" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Manrope:300,regular,600" rel="stylesheet" />
+
+    <!-- Locomotive Scroll -->
+    <script src="https://unpkg.com/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 </head>
 
 <body>
-    <main>
-        <header>
-            <nav id="main_nav">
+    <header>
+        <nav id="main_nav">
+            <ul>
+                <li><a href="#about">à propos</a></li>
+                <li><a href="#projects">projets</a></li>
+                <li><a href="#contact">contact</a></li>
+                <li><a href="/en/">Eng</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main data-scroll-container>
+
+        <section class="hero_banner scroll_animation fade_in_right">
+            <div class="grid grid_col_12 hero_txt">
+                <h1 class="col_span_8">AudioSphere</h1>
+                <p class="col_span_3">Podcast Application</p>
+            </div>
+            <figure><img src="/assets/images/podcast_page.jpg" alt="" /></figure>
+        </section>
+
+        <section class="intro_section grid grid_col_10 scroll_animation fade_in">
+            <div class="col_span_4">
+                <h2>Project</h2>
+                <p>
+                    <span>About the application:</span> We have created a podcast platform where you can listen to a
+                    variety of
+                    audio content and upload your own. No account is required to browse, but you will need one for
+                    uploading.
+                </p>
+            </div>
+            <div class="col_span_4">
+                <img src="/assets/images/music_player_mobile.jpeg" alt="" />
+                <img src="/assets/images/playlist_page_details_open_mobile.jpeg" alt="" />
+            </div>
+            <div class="col_span_3">
                 <ul>
-                    <li><a href="#about">à propos</a></li>
-                    <li><a href="#projects">projets</a></li>
-                    <li><a href="#contact">contact</a></li>
-                    <li><a href="/en/">Eng</a></li>
+                    <li>
+                        <span>Home Page:</span> Find categories and browse audio thumbnails with titles on a slider
+                        layout for
+                        easy exploration.
+                    </li>
                 </ul>
-            </nav>
-        </header>
+            </div>
+            <div class="col_span_3">
+                <ul>
+                    <li>
+                        <span>Search:</span> Use the search bar to find specific podcasts or favorite genres.
+                    </li>
+                </ul>
+            </div>
+            <div class="col_span_3">
+                <ul>
+                    <li>
+                        <span>Account:</span> Create an account to upload podcasts, create playlists, and follow other
+                        users.
+                    </li>
+                </ul>
+            </div>
+            <div class="col_span_4">
+                <ul>
+                    <li>
+                        <span>Player:</span> Listen to podcasts continuously with playback controls and download
+                        options.
+                    </li>
+                </ul>
+            </div>
+            <div class="col_span_4">
+                <ul>
+                    <li>
+                        <span>Download:</span> Save podcasts for offline listening, even without an internet connection.
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-<section class="hero_banner">
-    <div class=".hero_container">
-        <h1>AudioSphere</h1>
-        <p>Podcast Application</p>
-    </div>
-    <figure><img src="https://placehold.it/900x600?text=podcast%20app" alt=""></figure>
-</section>
-<section class="intro_section">
-    <h2>Project</h2>
-    <p>About the application: We created a podcast platform where you can listen to a variety of audio content and
-        upload your own. No account is needed to browse, but you'll need one to download.</p>
-    <div>
-        <ul>
-            <li>
-                Homepage: Find categories and browse audio thumbnails with titles on a slider layout for easy
-                exploration.
-            </li>
-            <li>
-                My Playlist: Exclusively for account holders, manage downloads, edit content, and update profiles with a
-                personal touch.
-            </li>
-            <li>
-                Search: Easily find what you're looking for with our search function. Select an audio to listen and
-                explore categories effortlessly.
-            </li>
-            <li>
-                Audio List: Dive into specific categories with detailed audio descriptions and a play button for instant
-                listening.
-            </li>
-            <li>
-                Player: Enjoy selected audio with playback controls and a larger thumbnail for a better visual
-                experience.
-            </li>
-            <li>
-                Upload Form: Share your audio creations by filling out our simple form, including title, description,
-                thumbnail, and genre selection.
-            </li>
-        </ul>
-    </div>
-</section>
-<section class="project_section">
-    <h1>Challenges and Solutions</h1>
-    <span>Technical Challenges - Feature Overload:</span>
-    <p>As a team, we initially grappled with the challenge of incorporating an extensive array of features within the
-        allotted time. To overcome this, we collectively conducted a comprehensive reassessment, prioritizing features
-        that align closely with our users' needs. Through ongoing collaborative discussions and adherence to agile
-        development practices, we successfully streamlined the feature set, ensuring a more focused and efficient
-        development process.</p>
-    <span>Poor Communication:</span>
-    <p>Communication emerged as a significant pain point, leading to misunderstandings and delays within our team.
-        Recognizing its critical importance, we implemented regular team meetings, status updates, and transparent
-        documentation. These measures significantly improved information flow, minimizing misunderstandings and
-        fostering a more collaborative work environment.</p>
-    <span>Constant Changes Without Advising:</span>
-    <p>We encountered a challenge related to the introduction of constant changes without proper communication. To
-        address this, we collectively implemented a formalized change management process, ensuring that proposed
-        modifications were well-documented and seamlessly integrated into the development pipeline.</p>
-    <span>Not Listening to Others' Opinions:</span>
-    <p>A challenge we faced was a lack of receptiveness to others' opinions, hindering the creative and collaborative
-        process. To foster a more inclusive environment, we implemented structured feedback sessions, encouraging team
-        members to share their opinions. This shift in culture allowed for a more dynamic exchange of ideas and
-        ultimately contributed to better project outcomes</p>
-</section>
-<section class="project_section">
-    <h1>Conclusion</h1>
-    <p>audioSphere successfully addressed challenges in the podcasting industry, providing a holistic solution for both
-        creators and listeners. Our innovative features, user-friendly interface, and emphasis on community engagement
-        have positioned audioSphere as a leader in the evolving podcasting landscape. As we continue to evolve
-        audioSphere, it stands as a testament to the impact of technology in enhancing and revolutionizing the podcast
-        experience.</p>
-    <a href="#">AudioSphere</a>
-</section>
+        <section class="intro_section grid grid_col_4 scroll_animation fade_in_left">
+            <div class="col_span_2">
+                <img src="/assets/images/login_page_mobile.jpeg" alt="" />
+                <img src="/assets/images/category_page_mobile.jpeg" alt="" />
+            </div>
+            <div class="col_span_2">
+                <img src="/assets/images/category_search_page_mobile.jpeg" alt="" />
+                <img src="/assets/images/upload_page_mobile.jpeg" alt="" />
+            </div>
+        </section>
 
+        <section class="objectif_section grid grid_col_8 scroll_animation fade_up">
+            <div class="col_span_4">
+                <h2>Goals</h2>
+                <p>
+                    With audioSphere, we aimed to revolutionize the podcasting world by addressing discovery,
+                    accessibility, and
+                    engagement. Our mission was to have a platform that caters to all podcast enthusiasts while enabling
+                    creators to expand their audience.
+                </p>
+            </div>
+            <div class="col_span_4">
+                <img src="/assets/images/login_signup_page_mobile.jpg" alt="" />
+            </div>
+        </section>
+
+        <section class="team_section grid grid_col_10 scroll_animation slide_up">
+            <div class="col_span_6">
+                <img src="/assets/images/category_search_page_desktop.jpeg" alt="" />
+            </div>
+            <div class="col_span_4">
+                <h2>Team</h2>
+                <p>
+                    Our three-person team collaborated closely on UI/UX design using Figma.
+                </p>
+            </div>
+            <div class="col_span_3">
+                <h3>Tischa</h3>
+                <span>Front-end</span>
+                <p>
+                    Tischa worked on the homepage design, search page, audio list page, and player.
+                </p>
+            </div>
+            <div class="col_span_3">
+                <h3>Maiko</h3>
+                <span>Front-end</span>
+                <p>
+                    Maiko handled account-related functions. Password and signup and player-related functions.
+                </p>
+            </div>
+            <div class="col_span_3">
+                <h3>Tanveer</h3>
+                <span>Back-end</span>
+                <p>
+                    Tanveer focused on download, search, audio list, player, and homepage sliders.
+                </p>
+            </div>
+        </section>
+
+        <section class="plan_section grid grid_col_6 scroll_animation fade_in">
+            <div class="col_span_6">
+                <h2>Planning</h2>
+            </div>
+            <div class="col_span_6">
+                <img src="/assets/images/MOODBOARD.jpg" alt="" />
+            </div>
+            <div class="col_span_3">
+                <img src="/assets/images/dbschema.jpg" alt="" />
+            </div>
+            <div class="col_span_3">
+                <img src="/assets/images/plan_sitemap.jpg" alt="" />
+            </div>
+            <div class="col_span_6">
+                <img src="/assets/images/DATABASE SCHEMA & SITEMAP.jpg" alt="" />
+            </div>
+        </section>
+
+        <section class="conclusion_section grid grid_col_12 scroll_animation fade_in_right">
+            <div class="col_span_8">
+                <h2>Conclusion</h2>
+                <h3>Features and Functionality:</h3>
+            </div>
+            <div class="col_span_6">
+                <ul>
+                    <li>
+                        <span>User-Friendly Interface:</span> We designed audioSphere with usability in mind, ensuring a
+                        seamless experience for both novices and seasoned podcast fans.
+                    </li>
+                </ul>
+            </div>
+            <div class="col_span_6">
+                <ul>
+                    <li>
+                        <span>Exclusive Playlist Creation:</span> Registered users can have and manage playlists, adding
+                        a
+                        personal touch to their listening experience.
+                    </li>
+                </ul>
+            </div>
+            <div class="col_span_4">
+                <ul>
+                    <li>
+                        <span>Efficient Search:</span> Our powerful search feature allows users to find their favorite
+                        podcasts
+                        and genres with minimal effort, saving time and enhancing the user experience.
+                    </li>
+                </ul>
+            </div>
+            <div class="col_span_4">
+                <ul>
+                    <li>
+                        <span>Accessibility for All:</span> We believe in inclusivity. audioSphere offers free
+                        navigation and
+                        listening, thus breaking barriers and welcoming a diverse audience.
+                    </li>
+                </ul>
+            </div>
+            <div class="col_span_4">
+                <ul>
+                    <li>
+                        <span>Free Navigation and Listening:</span> Dive into a vast array of podcasts at no cost,
+                        fostering
+                        accessibility and expanding the reach of podcasting.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="grid grid_col_2 scroll_animation fade_in_left">
+            <img src="/assets/images/category_page_mockup_desktop.jpeg" alt="" />
+            <img src="/assets/images/music_player_mockup_desktop.jpg" alt="" />
+        </div>
+
+        <section class="conclusion_section grid grid_col_8 scroll_animation fade_in">
+            <div class="col_span_8">
+                <h3>Challenges and Solutions:</h3>
+            </div>
+            <div class="col_span_4">
+                <p>
+                    <span>Managing Feature Overload:</span> We streamlined our feature set by prioritizing user needs
+                    and
+                    adopting agile practices for a more targeted development process.
+                </p>
+            </div>
+            <div class="col_span_4">
+                <p>
+                    <span>Improving Communication:</span> Regular meetings, progress status updates, and transparent
+                    documentation improved communication within our team, thus reducing misunderstandings and delays.
+                </p>
+            </div>
+            <div class="col_span_4">
+                <p>
+                    <span>Handling Constant Changes:</span> We implemented a formal change management process to ensure
+                    seamless
+                    integration of changes into our development pipeline.
+                </p>
+            </div>
+
+            <div class="col_span_4">
+                <p>
+                    <span>Encouraging Openness:</span> Structured feedback sessions fostered a more inclusive
+                    environment,
+                    encouraging diverse perspectives and enhancing collaboration.
+                </p>
+            </div>
+            <div class="col_span_6">
+                <p>
+                    <span>Conclusion:</span> audioSphere tackled industry challenges by providing a comprehensive
+                    solution for
+                    creators and listeners. Our innovative features and community-focused approach position us as
+                    leaders in the
+                    podcasting landscape, with ongoing evolution improving the podcasting experience for all.
+                </p>
+            </div>
+        </section>
 
     </main>
 
+    <script src="/assets/js/script.js"></script>
 </body>
 
 </html>
