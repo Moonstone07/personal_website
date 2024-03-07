@@ -29,7 +29,7 @@
     </header>
     <main data-scroll-container>
 
-        <section class="hero_banner  fade_in_right">
+        <section class="hero_banner fade_in_right" data-scroll data-scroll-class="show">
             <div class="grid grid_col_12 hero_txt">
                 <h1 class="col_span_8">AudioSphere</h1>
                 <p class="col_span_3">Podcast Application</p>
@@ -37,7 +37,7 @@
             <figure><img src="/assets/images/podcast_page.jpg" alt="" /></figure>
         </section>
 
-        <section class="intro_section grid grid_col_10  fade_in">
+        <section class="intro_section grid grid_col_10 fade_in" data-scroll data-scroll-class="show">
             <div class="col_span_4">
                 <h2>Project</h2>
                 <p>
@@ -92,7 +92,7 @@
             </div>
         </section>
 
-        <section class="intro_section grid grid_col_4  fade_in_left">
+        <section class="intro_section grid grid_col_4 fade_in_left" data-scroll data-scroll-class="show">
             <div class="col_span_2">
                 <img src="/assets/images/login_page_mobile.jpeg" alt="" />
                 <img src="/assets/images/category_page_mobile.jpeg" alt="" />
@@ -103,7 +103,7 @@
             </div>
         </section>
 
-        <section class="objectif_section grid grid_col_8  fade_up">
+        <section class="objectif_section grid grid_col_8 fade_up" data-scroll data-scroll-class="show">
             <div class="col_span_4">
                 <h2>Goals</h2>
                 <p>
@@ -118,7 +118,7 @@
             </div>
         </section>
 
-        <section class="team_section grid grid_col_10  slide_up">
+        <section class="team_section grid grid_col_10 slide_up" data-scroll data-scroll-class="show">
             <div class="col_span_6">
                 <img src="/assets/images/category_search_page_desktop.jpeg" alt="" />
             </div>
@@ -151,7 +151,7 @@
             </div>
         </section>
 
-        <section class="plan_section grid grid_col_6  fade_in">
+        <section class="plan_section grid grid_col_6 fade_in" data-scroll data-scroll-class="show">
             <div class="col_span_6">
                 <h2>Planning</h2>
             </div>
@@ -169,7 +169,7 @@
             </div>
         </section>
 
-        <section class="conclusion_section grid grid_col_12  fade_in_right">
+        <section class="conclusion_section grid grid_col_12 fade_in_right" data-scroll data-scroll-class="show">
             <div class="col_span_8">
                 <h2>Conclusion</h2>
                 <h3>Features and Functionality:</h3>
@@ -220,12 +220,12 @@
             </div>
         </section>
 
-        <div class="grid grid_col_2  fade_in_left">
+        <div class="grid grid_col_2 fade_in_left" data-scroll data-scroll-class="show">
             <img src="/assets/images/category_page_mockup_desktop.jpeg" alt="" />
             <img src="/assets/images/music_player_mockup_desktop.jpg" alt="" />
         </div>
 
-        <section class="conclusion_section grid grid_col_8  fade_in">
+        <section class="conclusion_section grid grid_col_8 fade_in" data-scroll data-scroll-class="show">
             <div class="trigger"></div>
             <div class="col_span_8">
                 <h3>Challenges and Solutions:</h3>
@@ -266,12 +266,12 @@
                     podcasting landscape, with ongoing evolution improving the podcasting experience for all.
                 </p>
             </div>
-
-            <a href="https://tischa79.web582.com/ui-ux/audiosphere-v2/views/view-homesliders.php" class="hover_btn"
-                target="_blank" rel="noopener noreferrer">check it out</a>
         </section>
 
-        <footer id="contact" class=" slide_up">
+        <a href="https://tischa79.web582.com/ui-ux/audiosphere-v2/views/view-homesliders.php" class="hover_btn"
+            target="_blank" rel="noopener noreferrer">check it out</a>
+
+        <footer id="contact" class=" slide_up" data-scroll data-scroll-class="show">
             <h2>contact</h2>
             <p class="outro_text">Ready to elevate your digital presence? Let's collaborate on your next project.<br>
             <p class="outro_text">
@@ -295,8 +295,23 @@
         <div class="home_btn"><a href="/en/" class="back-to-home-btn hover_btn">back</a></div>
     </main>
 
-    <!-- <script src="/assets/js/script.js"></script> -->
-    <script src="/assets/js/scroll.js"></script>
+    <script>
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true,
+            inertia: 0.5,
+            lerp: 0.25,
+            mobile: {
+                smooth: true,
+            }
+        });
+
+        scroll.on('call', (func, direction, elem) => {
+            if (func === 'in-view') {
+                elem.classList.add('show');
+            }
+        });
+    </script>
 </body>
 
 </html>
