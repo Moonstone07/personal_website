@@ -52,7 +52,7 @@ function animateElements() {
   document.querySelectorAll(".fade_in_right, .fade_in_left, .fade_in, .slide_up, .fade_up").forEach((element) => {
     const elementTop = element.offsetTop;
     if (scrollY + viewportHeight >= elementTop) {
-      element.classList.add("show");
+      element.classList.add("reveal");
     }
   });
 }

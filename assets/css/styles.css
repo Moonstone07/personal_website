@@ -394,7 +394,7 @@ p {
 /* footer */
 
 footer {
-    margin: var(--margin_xlarge) auto;
+    /* margin: var(--margin_xlarge) auto; */
     padding: var(--padding_large);
 }
 
@@ -438,7 +438,7 @@ footer {
 .slide_up,
 .fade_up {
     opacity: 0;
-    transition: opacity 2s ease-in-out, transform 2s ease-in-out; 
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; 
 }
 
 .fade_in_right {
@@ -453,15 +453,11 @@ footer {
     transform: translateY(100px);
 }
 
-.slide_up {
-    transform: translateY(100px);
-}
-
 .fade_up {
     transform: translateY(100px);
 }
 
-.show {
+.reveal {
     opacity: 1;
     transform: translateX(0);
 }
