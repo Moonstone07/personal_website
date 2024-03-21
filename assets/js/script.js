@@ -1,15 +1,15 @@
-const lenis = new Lenis();
+// const lenis = new Lenis();
 
-lenis.on("scroll", (e) => {
-  console.log(e);
-});
+// lenis.on("scroll", (e) => {
+//   console.log(e);
+// });
 
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
+// function raf(time) {
+//   lenis.raf(time);
+//   requestAnimationFrame(raf);
+// }
 
-requestAnimationFrame(raf);
+// requestAnimationFrame(raf);
 
 // ARCCODION
 
@@ -115,23 +115,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const elementsToAnimate = document.querySelectorAll(
-    ".fade_in_right, .fade_in_left, .fade_in, .slide_up, .fade_up"
-  )
+  // const elementsToAnimate = document.querySelectorAll(
+  //   ".fade_in_right, .fade_in_left, .fade_in, .slide_up, .fade_up"
+  // );
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("reveal")
-      }
-    });
-  }, {
-    threshold: 0.5,
-  });
-  elementsToAnimate.forEach((element) => {
-    observer.observe(element);
-  
-  })
+  // const observer = new IntersectionObserver((entries) => {
+  //   entries.forEach((entry) => {
+  //     if (entry.isIntersecting) {
+  //       entry.target.classList.add("reveal");
+  //     }
+  //   });
+  // }, {
+  //   threshold: 0.5,
+  // });
+  // elementsToAnimate.forEach((element) => {
+  //   observer.observe(element);
+  // });
 });
 
 // Hero Image move
