@@ -1,5 +1,15 @@
-// console.log("hello world");
+const lenis = new Lenis();
 
+lenis.on("scroll", (e) => {
+  console.log(e);
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
 
 // ARCCODION
 
@@ -36,33 +46,9 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
 // touch events for mobile devices
 let slides, circles;
 
+
+// DOMContentLoaded event listener
 document.addEventListener("DOMContentLoaded", function () {
-// Locomotive Scroll
-const scroll = new LocomotiveScroll({
-  el: document.querySelector("[data-scroll-container]"),
-  smooth: true,
-  smoothMobile: true,
-  inertia: 0.3,
-});
-
-// Function to check if elements are in view and trigger animation
-function animateElements() {
-  const scrollY = scroll.scroll.instance.scroll.y;
-  const viewportHeight = window.innerHeight;
-  document.querySelectorAll(".fade_in_right, .fade_in_left, .fade_in, .slide_up, .fade_up").forEach((element) => {
-    const elementTop = element.offsetTop;
-    if (scrollY + viewportHeight >= elementTop) {
-      element.classList.add("reveal");
-    }
-  });
-}
-
-// Call animateElements function when page loads
-animateElements();
-
-// Call animateElements function when scroll event occurs
-scroll.on("scroll", animateElements);
-
 
   slides = document.querySelector(".slides");
   circles = document.querySelectorAll(".circle");
@@ -129,27 +115,34 @@ scroll.on("scroll", animateElements);
     });
   }
 
-  // Back to home button
-  const backToHomeBtn = document.querySelector(".back-to-home");
-  backToHomeBtn.addEventListener("click", () => {
-    
-  })
+  const elementsToAnimate = document.querySelectorAll(
+    ".fade_in_right, .fade_in_left, .fade_in, .slide_up, .fade_up"
+  )
 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal")
+      }
+    });
+  }, {
+    threshold: 0.5,
+  });
+  elementsToAnimate.forEach((element) => {
+    observer.observe(element);
+  
+  })
 });
 
-
 // Hero Image move
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener("DOMContentLoaded", (event) => {
   // Check if it's desktop view
-  if(window.matchMedia("(min-width: 768px)").matches) {
+  if (window.matchMedia("(min-width: 768px)").matches) {
     // Select the image element
-    const image = document.querySelector('#intro .intro_image_wrapper');
+    const image = document.querySelector("#intro .intro_image_wrapper");
     // Select the about section
-    const aboutSection = document.querySelector('#about');
+    const aboutSection = document.querySelector("#about");
     // Append the image to the about section
     aboutSection.appendChild(image);
   }
 });
-
-
-
