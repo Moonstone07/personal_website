@@ -406,7 +406,6 @@
 
  footer {
      margin: var(--margin_xlarge) var(--margin_medium);
-     /* padding: var(--padding_large); */
  }
 
  .outro_text,
@@ -511,6 +510,12 @@
 
      a.cta:hover {
          border-bottom: none;
+     }
+
+     /* intro */
+
+     #intro {
+        height: 100vh;
      }
 
      .intro_text_wrapper {
