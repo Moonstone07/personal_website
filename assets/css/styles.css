@@ -191,8 +191,8 @@
  }
 
  section {
+     margin: 100px auto;
      padding-inline: var(--padding_medium);
-     margin-inline: auto;
  }
 
  h2 {
