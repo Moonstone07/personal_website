@@ -1,16 +1,3 @@
-// const lenis = new Lenis();
-
-// lenis.on("scroll", (e) => {
-//   console.log(e);
-// });
-
-// function raf(time) {
-//   lenis.raf(time);
-//   requestAnimationFrame(raf);
-// }
-
-// requestAnimationFrame(raf);
-
 // ARCCODION
 
 document.querySelectorAll(".accordion_info").forEach((item) => {
@@ -46,10 +33,8 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
 // touch events for mobile devices
 let slides, circles;
 
-
 // DOMContentLoaded event listener
 document.addEventListener("DOMContentLoaded", function () {
-
   slides = document.querySelector(".slides");
   circles = document.querySelectorAll(".circle");
 
@@ -114,23 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
-  // const elementsToAnimate = document.querySelectorAll(
-  //   ".fade_in_right, .fade_in_left, .fade_in, .slide_up, .fade_up"
-  // );
-
-  // const observer = new IntersectionObserver((entries) => {
-  //   entries.forEach((entry) => {
-  //     if (entry.isIntersecting) {
-  //       entry.target.classList.add("reveal");
-  //     }
-  //   });
-  // }, {
-  //   threshold: 0.5,
-  // });
-  // elementsToAnimate.forEach((element) => {
-  //   observer.observe(element);
-  // });
 });
 
 // Hero Image move
@@ -145,3 +113,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
     aboutSection.appendChild(image);
   }
 });
+
+
