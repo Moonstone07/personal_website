@@ -5,6 +5,9 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
     const currentAccordionItem = item.parentElement;
     const accordionContent =
       currentAccordionItem.querySelector(".accordion_content");
+    const accordionIcon = currentAccordionItem.querySelector(
+      ".accordion_title span"
+    );
 
     //TOGGLE
     currentAccordionItem.classList.toggle("show");
@@ -13,8 +16,10 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
 
     if (currentAccordionItem.classList.contains("show")) {
       accordionContent.style.display = "block";
+      accordionIcon.textContent = "-";
     } else {
       accordionContent.style.display = "none";
+      accordionIcon.textContent = "+";
     }
 
     // keep the first accordion item open by default
@@ -23,10 +28,12 @@ document.querySelectorAll(".accordion_info").forEach((item) => {
         //   remove it and stop displaying the accordion content
         item.classList.remove("show");
         item.querySelector(".accordion_content").style.display = "none";
+        item.querySelector(".accordion_title span").textContent = "+";
       }
     });
   });
 });
+
 
 // RESUME SLIDER
 
