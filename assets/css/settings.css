@@ -85,7 +85,7 @@
 */
  li {
      list-style: none;
-     font-size: 1.6rem;
+     /* font-size: 1.6rem; */
      line-height: 1.5;
  }
 
@@ -117,15 +117,15 @@
      }
  } */
 
- main,
+ /* main,
  .app {
      text-rendering: optimizeLegibility;
      -webkit-font-smoothing: antialiased;
      -webkit-tap-highlight-color: transparent;
 
      margin: 0 auto;
-     /* max-width: 192rem; */
- }
+     max-width: 192rem;
+ } */
 
  :root {
      --primary_color: #4C0000;
