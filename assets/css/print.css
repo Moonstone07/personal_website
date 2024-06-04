@@ -187,7 +187,7 @@ img {
 @media screen and (min-width: 1024px) {
 
     h1 {
-        font-size: 31rem;
+        font-size: 12rem;
     }
 
     .contact {
@@ -197,6 +197,5 @@ img {
     .contact li {
         font-size: 1em;
     }
-
 
 }
