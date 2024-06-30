@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prints</title>
+    <title>Impressions - Bisnak Studio</title>
+    <meta name="description"
+        content="Découvrez les magnifiques impressions de la photographie de rue par Bisnak Studio. Achetez des impressions de haute qualité de scènes urbaines captivantes.">
+    <meta name="keywords"
+        content="Bisnak Studio, impressions, photographie de rue, impressions photo, photographie urbaine, impressions de haute qualité">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Impressions - Bisnak Studio">
+    <meta property="og:description"
+        content="Découvrez les magnifiques impressions de la photographie de rue par Bisnak Studio. Achetez des impressions de haute qualité de scènes urbaines captivantes.">
+    <meta property="og:image" content="https://votre-site.com/assets/images/street_23.jpg">
+    <meta property="og:url" content="https://votre-site.com/prints.html">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="/assets/css/print.css">
     <link rel="stylesheet" href="/assets/css/settings.css">
     <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
 
-
     <!-- Gsap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
 
     <!-- Lenis -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -22,9 +33,9 @@
 <body>
     <header>
         <h1>bisnak studio</h1>
-        <button id="openMenu"></button>
-        <div id="mobileMenu" class="menu">
-            <button id="closeMenu"></button>
+        <button id="openMenu" aria-label="Ouvrir le menu"></button>
+        <div id="mobileMenu" class="menu" role="navigation">
+            <button id="closeMenu" aria-label="Fermer le menu"></button>
             <ul>
                 <li><a href="index.html">street</a></li>
                 <li><a href="portrait.html">portraits</a></li>
@@ -32,16 +43,16 @@
             </ul>
         </div>
 
-        <div class="contact">
-            <p>photographe</p>
-
-            <ul>
-                <li>portraits</li>
-                <li>street</li>
-                <li>prints</li>
-            </ul>
-            <p>bisnak.studio@gmail.com</p>
-        </div>
+                <div class="contact">
+                    <p>photographe</p>
+                
+                    <ul>
+                        <li>portraits</li>
+                        <li>street</li>
+                        <li>prints</li>
+                    </ul>
+                    <p>bisnak.studio@gmail.com</p>
+                </div>
     </header>
 
     <main class="container">
@@ -49,7 +60,7 @@
             <div class="col">
                 <div class="img-container right">
                     <img src="/assets/images/street_23.jpg" alt="" />
-                    <p>Lunar dreamscape</p>
+                    <!-- <p>Lunar dreamscape</p> -->
                 </div>
             </div>
             <div class="col"></div>
@@ -59,7 +70,7 @@
             <div class="col">
                 <div class="img-container left">
                     <img src="/assets/images/street_20.jpg" alt="" />
-                    <p>Futuristic control relic</p>
+                    <!-- <p>Futuristic control relic</p> -->
                 </div>
             </div>
         </div>
@@ -67,7 +78,7 @@
             <div class="col">
                 <div class="img-container right">
                     <img src="/assets/images/street_19.jpg" alt="" />
-                    <p>Neo-Tokyo crimson glow</p>
+                    <!-- <p>Neo-Tokyo crimson glow</p> -->
                 </div>
             </div>
             <div class="col"></div>
@@ -77,7 +88,7 @@
             <div class="col">
                 <div class="img-container left">
                     <img src="/assets/images/street_16.jpg" alt="" />
-                    <p>Galactic ocean abyss</p>
+                    <!-- <p>Galactic ocean abyss</p> -->
                 </div>
             </div>
         </div>
@@ -85,7 +96,7 @@
             <div class="col">
                 <div class="img-container right">
                     <img src="/assets/images/street_26.jpg" alt="" />
-                    <p>Hued cosmic dust</p>
+                    <!-- <p>Hued cosmic dust</p> -->
                 </div>
             </div>
             <div class="col"></div>
@@ -95,7 +106,7 @@
             <div class="col">
                 <div class="img-container left">
                     <img src="/assets/images/street_24.jpg" alt="" />
-                    <p>Silent sentinel</p>
+                    <!-- <p>Silent sentinel</p> -->
                 </div>
             </div>
         </div>
@@ -103,7 +114,7 @@
             <div class="col">
                 <div class="img-container right">
                     <img src="/assets/images/butterfly_02.jpg" alt="" />
-                    <p>Ethereal quantum</p>
+                    <!-- <p>Ethereal quantum</p> -->
                 </div>
             </div>
             <div class="col"></div>
@@ -113,7 +124,7 @@
             <div class="col">
                 <div class="img-container left">
                     <img src="/assets/images/street_28.jpg" alt="" />
-                    <p>Galactic sister anomalies</p>
+                    <!-- <p>Galactic sister anomalies</p> -->
                 </div>
             </div>
         </div>
@@ -121,7 +132,7 @@
             <div class="col">
                 <div class="img-container right">
                     <img src="/assets/images/street_22.jpg" alt="" />
-                    <p>Luminous drifters</p>
+                    <!-- <p>Luminous drifters</p> -->
                 </div>
             </div>
             <div class="col"></div>
@@ -131,61 +142,17 @@
             <div class="col">
                 <div class="img-container left">
                     <img src="/assets/images/street_15.jpg" alt="" />
-                    <p>Portal void beyond</p>
+                    <!-- <p>Portal void beyond</p> -->
                 </div>
             </div>
         </div>
+
         <section class="print_opt">
-            <div id="mc_embed_shell">
 
-                <div id="mc_embed_signup">
-                    <form
-                        action="https://work.us22.list-manage.com/subscribe/post?u=a42413af354a2d5d6461c1802&amp;id=3b44957ff7&amp;f_id=00eecde1f0"
-                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-                        target="_self" novalidate="">
-                        <div id="mc_embed_signup_scroll">
-                            <h2>Subscribe to find out when & where to buy prints</h2>
-                            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                            <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span
-                                        class="asterisk">*</span></label><input type="email" name="EMAIL"
-                                    class="required email" id="mce-EMAIL" required="" value=""></div>
-                            <div id="mce-responses" class="clear foot">
-                                <div class="response" id="mce-error-response" style="display: none;"></div>
-                                <div class="response" id="mce-success-response" style="display: none;"></div>
-                            </div>
-                            <div aria-hidden="true" style="position: absolute; left: -5000px;">
-                                /* real people should not fill this in and expect good things - do not remove this or
-                                risk form bot
-                                signups */
-                                <input type="text" name="b_a42413af354a2d5d6461c1802_3b44957ff7" tabindex="-1" value="">
-                            </div>
-                            <div class="optionalParent">
-                                <div class="clear foot">
-                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button"
-                                        value="Subscribe">
-                                    <!-- <p style="margin: 0px auto;"><a href="http://eepurl.com/iR9m-k"
-                                            title="Mailchimp - email marketing made easy and fun"><span
-                                                style="display: inline-block; background-color: transparent; border-radius: 4px;"><img
-                                                    class="refferal_badge"
-                                                    src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg"
-                                                    alt="Intuit Mailchimp"
-                                                    style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a>
-                                    </p> -->
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <div id="pixieset-contact-form"></div>
+            <script type="text/javascript"
+                src="https://bisnakStudio.pixieset.com/contact-form/cf_jsq0GOe0wYB5ClfgXEQkfIgTtBEw/embed"></script>
 
-            <!-- <ul>
-                <li>4x6</li>
-                <li>5x7</li>
-                <li>8x10</li>
-                <li>11x14</li>
-            </ul>
-            <h3>pour commander / to order</h3>
-            <p>bisnak.studio@gmail.com</p> -->
         </section>
 
         <footer>

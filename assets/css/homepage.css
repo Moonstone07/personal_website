@@ -1,4 +1,3 @@
-
  body {
      font-size: 1em;
      color: var(--primary_text_color);
@@ -106,125 +105,64 @@
      margin-top: var(--margin_small);
  }
 
- /* Accordion */
-
- .accordion {
-     margin: 20px auto;
- }
-
- .accordion_item {
-     display: flex;
-     flex-direction: column;
-     align-items: stretch;
- }
-
- .accordion_item .accordion_content {
-     display: none;
- }
-
- .accordion_item.show .accordion_content {
-     display: block;
- }
-
- .accordion_title {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     padding: var(--padding_small) 0;
-     text-align: left;
-     font-size: clamp(var(--min-heading-font-size), var(--preferred-heading-font-size), var(--max-heading-font-size));
-     font-weight: 600;
-     border-bottom: 1px solid var(--secondary_text_color);
-     margin: 0;
- }
-
- .accordion_text {
-     padding: var(--padding_small) 0;
-     font-size: .875rem;
-     text-transform: uppercase;
- }
+ /* work */
 
  .accordion_content {
-     padding: 15px;
-     display: none;
+     margin-bottom: 80px;
  }
 
- .accordion_img {
-     max-width: 100%;
-     height: auto;
-     margin-top: 15px;
- }
+ /* photography */
 
- /* slider */
-
- #resume {
-     margin: var(--margin_xlarge) auto;
- }
-
- .slider {
+ #photography {
      position: relative;
-     overflow: hidden;
+     margin: var(--margin_xlarge) auto;
+     height: 50vh;
  }
 
- .slides {
-     display: flex;
-     scroll-snap-type: x mandatory;
-     overflow-x: scroll;
- }
-
- .slides::-webkit-scrollbar {
-     display: none;
- }
-
- .slide {
-     flex: 1 0 auto;
-     width: 100%;
-     scroll-snap-align: start;
-     padding: var(--padding_medium);
-     margin-bottom: var(--margin_xlarge);
- }
-
- .slide h3 {
-     font-size: clamp(var(--min-heading-font-size), var(--preferred-heading-font-size), var(--max-heading-font-size));
-     font-family: 'Manrope', sans-serif;
-     margin-bottom: var(--margin_medium);
- }
-
- .slide h4 {
-     font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
-     font-weight: 600;
-     text-transform: uppercase;
-     font-family: 'Manrope', sans-serif;
-     margin-bottom: var(--margin_small);
- }
-
- .slide li {
-     font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
-     font-weight: 300;
-     margin-bottom: var(--margin_medium);
- }
-
- .circles {
+ .photography_block {
      position: absolute;
-     bottom: 10px;
-     left: 50%;
-     transform: translateX(-50%);
-     display: flex;
-     gap: 10px;
+     height: auto;
+     transition: all 0.3s;
  }
 
- .circle {
-     width: 20px;
-     height: 20px;
-     border-radius: 50%;
-     background: var(--accent_color_inactive);
+ #photography :nth-child(1) {
+     width: 60%;
+     top: 0;
+     left: 0;
  }
 
- .circle.active {
-     transition: opacity 0.5s ease-in-out;
-     opacity: 1;
-     background: var(--accent_color_active);
+ #photography :nth-child(2) {
+     width: 50%;
+     top: 10%;
+     left: 70%;
  }
+
+ #photography :nth-child(3) {
+     width: 35%;
+     bottom: 0;
+     left: 45%;
+ }
+
+ .outro_text_1 {
+     position: absolute;
+     top: 50%;
+     left: 20%;
+     z-index: 10;
+     width: 100%;
+ }
+
+ .outro_text_1 h2 {
+    font-size: clamp(var(--min-kilo-font-size), var(--preferred-kilo-font-size), var(--max-kilo-font-size));
+    overflow-wrap:normal;
+ }
+
+ .arrow-right {
+     top: auto;
+     bottom: 0;
+     font-size: 1.5rem;
+ }
+
+
 
  /* footer */
 
@@ -263,37 +201,6 @@
      text-align: center;
      font-size: clamp(var(--min-extra-small-font-size), var(--preferred-extra-small-font-size), var(--max-extra-small-font-size));
      margin-top: var(--margin_xlarge);
- }
-
- /* Scroll animation */
- .fade_in_right,
- .fade_in_left,
- .fade_in,
- .slide_up,
- .fade_up {
-     opacity: 0;
-     transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
- }
-
- .fade_in_right {
-     transform: translateX(100px);
- }
-
- .fade_in_left {
-     transform: translateX(-100px);
- }
-
- .fade_in {
-     transform: translateY(100px);
- }
-
- .fade_up {
-     transform: translateY(100px);
- }
-
- .reveal {
-     opacity: 1;
-     transform: translateX(0);
  }
 
 
@@ -339,7 +246,7 @@
      /* intro */
 
      #intro {
-        height: 100vh;
+         height: 100vh;
      }
 
      .intro_text_wrapper {
@@ -375,45 +282,56 @@
          width: 50%;
      }
 
-     .accordion_item {
-         flex-direction: row;
-         align-items: flex-start;
-         gap: var(--gap_large);
+     #work div {
+         display: inline-block;
+         margin: 20px 10px;
+         width: 800px;
+         height: 500px;
+         background-color: #f0f0f0;
+         border-radius: 5px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         text-align: center;
+         padding: 20px;
+         transition: all 0.3s;
      }
 
-     .accordion_content {
-         width: 70%;
+     #photography {
+        height: 80vh;
      }
 
-     .accordion_title {
-         cursor: pointer;
-         width: 15em;
+     #photography :nth-child(1) {
+         width: 60%;
+         top: 0;
+         left: -100px;
      }
 
-     .accordion_img {
-         margin-top: 0;
-         margin-left: 15px;
+     #photography :nth-child(2) {
+         width: 50%;
+         top: 30%;
+         right: -250px;
      }
 
-     .slider {
-         width: 70%;
-         margin: 0 auto;
+     #photography :nth-child(3) {
+         width: 35%;
+         bottom: 700px;
+         left: 45%;
      }
 
-     .slide {
-         width: 100%;
+     .outro_text_1 {
+         position: absolute;
+         width: 50%;
+         top: 50%;
+         left: 60%;
+         transform: translate(-50%, -50%);
      }
 
-     .slide h3 {
-         font-size: clamp(var(--min-kilo-font-size), var(--preferred-kilo-font-size), var(--max-kilo-font-size));
-     }
-
-     .slide h4 {
-         font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
-     }
-
-     .slide li {
-         font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
+     .arrow-right {
+         position: absolute;
+         top: 100%;
+         right: 0;
+         /* transform: translateY(-50%); */
+         font-size: 2rem;
+         color: var(--secondary_text_color);
      }
 
      .footer_links {

@@ -78,6 +78,16 @@ li a {
     font-weight: 300;
 }
 
+button a {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    background-color: var(--secondary_color);
+    color: var(--primary_text_color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .app {
     position: relative;
     width: 100%;
@@ -115,6 +125,23 @@ li a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.pitch {
+    margin: 50px;
+}
+
+.pitch h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.pitch li {
+    list-style: point;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: 80px;
+    margin-bottom: 20px;
 }
 
 
