@@ -3,7 +3,7 @@
 
 body {
     font-family: 'Cormorant', serif;
-    font-size: var(--preferred-text-font-size);
+    font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
     color: var(--primary_color);
     background-color: var(--primary_text_color);
     padding-inline: var(--padding_medium);
@@ -19,8 +19,12 @@ h1 {
     /* margin: var(--margin_small) 0; */
 }
 
+li {
+    font-size: clamp(var(--min-extra-small-font-size), var(--preferred-extra-small-font-size), var(--max-extra-small-font-size));
+}
+
 li a {
-    font-size: 4rem;
+    font-size: clamp(var(--min-heading-font-size), var(--preferred-heading-font-size), var(--max-heading-font-size));
     text-transform: capitalize;
 }
 
@@ -73,14 +77,13 @@ li a {
     justify-content: space-between;
     align-items: start;
     gap: 1rem;
-
-    font-size: 2em;
     font-weight: 300;
 }
 
 button a {
-    font-size: 1.5rem;
-    padding: 1rem 2rem;
+    font-size: clamp(var(--min-heading-font-size), var(--preferred-heading-font-size), var(--max-heading-font-size));
+    text-transform: capitalize;
+    padding: .5rem 1rem;
     background-color: var(--secondary_color);
     color: var(--primary_text_color);
     border: none;
@@ -128,20 +131,20 @@ button a {
 }
 
 .pitch {
-    margin: 50px;
+    margin: 50px 0;
 }
 
 .pitch h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    line-height: 1;
 }
 
 .pitch li {
     list-style: point;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    margin-left: 80px;
-    margin-bottom: 20px;
+    margin: 40px;
 }
 
 
@@ -151,12 +154,8 @@ button a {
         font-size: 14rem;
     }
 
-    .contact {
-        font-size: 1em;
-    }
-
-    .contact li {
-        font-size: 1em;
+    button a {
+        padding: 1rem 2rem;
     }
 
     .grid {
