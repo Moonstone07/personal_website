@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Cormorant', serif;
-    font-size: var(--preferred-text-font-size);
+    font-size: clamp(var(--min-text-font-size), var(--preferred-text-font-size), var(--max-text-font-size));
     color: var(--primary_color);
     background-color: var(--primary_text_color);
     padding-inline: var(--padding_medium);
@@ -29,7 +29,7 @@ h1 {
 }
 
 li a {
-    font-size: 4rem;
+    font-size: clamp(var(--min-heading-font-size), var(--preferred-heading-font-size), var(--max-heading-font-size));
     text-transform: capitalize;
 }
 
@@ -154,14 +154,6 @@ footer {
 
     h1 {
         font-size: 14rem;
-    }
-
-    .contact {
-        font-size: 1em;
-    }
-
-    .contact li {
-        font-size: 1em;
     }
 
     img {
