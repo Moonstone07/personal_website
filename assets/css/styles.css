@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'Geist';
+    src: url('assets/fonts/Geist/webfonts/Geist-light.woff2') format('woff2');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'Geist';
+    src: url('assets/fonts/Geist/webfonts/Geist-Regular.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Geist';
+    src: url('assets/fonts/Geist/webfonts/Geist-Black.woff2') format('woff2');
+    font-weight: 900;
+}
+
+body {
+    font-family: 'Geist', sans-serif;
+    background: #fff4e1;
+    color: #521716;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+}
+
+.media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 3em;
+    height: 100vh;
+}
+
+.media img {
+    width: 100%;
+    height: 37.5em; 
+    object-fit: cover;
+}
+
+.rotate {
+    transform: rotate(-90deg);
+}
+
+h1 {
+    font-size: 8em;
+    font-weight: 900;
+    margin: 1em 0;
+    text-align: center;
+}
+
+p {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 1.5em;
+}
+
+footer {
+    padding: 2em;
+}
+
+footer a {
+    margin: 1em;
+    font-size: 1.2em;
+}
+
+
+@media screen and (max-width: 768px) {
+    .media-container {
+        flex-direction: column;
+        padding: 1em;
+        height: auto;
+    }
+
+    .media img {
+        height: 300px;
+    }
+
+    h1 {
+        font-size: 4em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+    
+}
