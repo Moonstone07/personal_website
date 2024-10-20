@@ -29,13 +29,19 @@ nav ul{
     padding: 1em 2em;
 }
 
+.hero_container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 .media-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2em;
     padding: 3em;
-    height: 100vh;
+    /* height: 100%; */
 }
 
 .media img {
@@ -52,8 +58,9 @@ h1 {
 }
 
 p {
+    width: 65ch;
     font-size: 1.5em;
-    text-align: center;
+    text-align: justify;
     padding: 1.5em;
 }
 
