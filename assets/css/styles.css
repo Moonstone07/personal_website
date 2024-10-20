@@ -44,10 +44,6 @@ nav ul{
     object-fit: cover;
 }
 
-.rotate {
-    transform: rotate(-90deg);
-}
-
 h1 {
     font-size: 8em;
     font-weight: 900;
