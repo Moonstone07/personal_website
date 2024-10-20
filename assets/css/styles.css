@@ -73,6 +73,13 @@ footer a {
     font-size: 1.2em;
 }
 
+.contact {
+width: 50em;
+margin: 0 auto;
+}
+
+/* Media Queries */
+
 
 @media screen and (max-width: 768px) {
     .media-container {
