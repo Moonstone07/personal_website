@@ -16,6 +16,10 @@
     font-weight: 900;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Geist', sans-serif;
     background: #fff4e1;
