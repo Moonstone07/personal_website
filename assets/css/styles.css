@@ -69,6 +69,7 @@ p {
     font-size: 1.5em;
     text-align: justify;
     padding: 1.5em;
+    text-align: center;
 }
 
 footer {
@@ -84,6 +85,11 @@ footer a {
 width: 50em;
 margin: 0 auto;
 }
+
+.temporary {
+    height: 100vh;
+}
+
 
 /* Media Queries */
 
