@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Bisnak Studio</title>
+    <link rel="stylesheet" href="carousel.css">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 60px 40px;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .contact-page-title {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: var(--primary-text);
+            margin-bottom: 15px;
+        }
+        
+        .contact-page-subtitle {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .contact-info {
+            padding: 20px 0;
+        }
+        
+        .contact-info h3 {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 400;
+            font-size: 1.3rem;
+            color: var(--primary-text);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-item-label {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 80px;
+        }
+        
+        .contact-item-value {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+            color: var(--primary-text);
+        }
+        
+        .contact-item-value a {
+            color: var(--primary-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item-value a:hover {
+            color: var(--text-hover);
+        }
+        
+        .services-list {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 35, 105, 0.1);
+        }
+        
+        .services-list h4 {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            color: var(--primary-text);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .services-list ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .services-list li {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .services-list li::before {
+            content: "•";
+            color: var(--primary-text);
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Form Layout Override for Horizontal Design */
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px 30px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group.half-width {
+            grid-column: span 1;
+        }
+        
+        /* Make message and submit button full width */
+        .contact-form .form-group:nth-last-child(4),
+        .contact-form .submit-button {
+            grid-column: 1 / -1;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .contact-form {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .form-group.full-width,
+            .form-group.half-width {
+                grid-column: 1;
+            }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 40px 20px;
+            }
+            
+            .contact-page-title {
+                font-size: 2.2rem;
+            }
+            
+            .contact-page-subtitle {
+                font-size: 1rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header Navigation -->
+    <header class="fixed-header">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <a href="contact.html" class="nav-link active">CONTACT</a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1 class="logo">Bisnak Studio<br><span class="subtitle">VISUAL STORYTELLING</span></h1>
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="index.html#featured" class="nav-link">FEATURED</a>
+                <a href="index.html#work" class="nav-link">WORK</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Page Content -->
+    <main class="contact-page">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1 class="contact-page-title">Let's Create Something Beautiful</h1>
+                <p class="contact-page-subtitle">
+                    Every frame tells a story. Whether you're looking to commission a custom shoot, 
+                    purchase fine art prints, or collaborate on a commercial project, 
+                    I'm here to bring your vision to life with artistic precision and authentic storytelling.
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-item-label">Email:</span>
+                            <span class="contact-item-value">
+                                <a href="mailto:bisnak.studio@gmail.com">bisnak.studio@gmail.com</a>
+                            </span>
+                        </div>
+                        <!-- <div class="contact-item">
+                            <span class="contact-item-label">Phone:</span>
+                            <span class="contact-item-value">
+                                <a href="tel:+1234567890">(123) 456-7890</a>
+                            </span>
+                        </div> -->
+                        <div class="contact-item">
+                            <span class="contact-item-label">Location:</span>
+                            <span class="contact-item-value">Montreal, QC</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-item-label">Response:</span>
+                            <span class="contact-item-value">Within 24 hours</span>
+                        </div>
+                    </div>
+                    
+                    <div class="services-list">
+                        <h4>Specializations</h4>
+                        <ul>
+                            <li>Fine Art Photography</li>
+                            <li>Urban & Architectural</li>
+                            <li>Portrait Sessions</li>
+                            <li>Commercial Projects</li>
+                            <li>Limited Edition Prints</li>
+                            <li>Custom Commissions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <form action="https://formspree.io/f/mvgqrgvy" method="POST" class="contact-form" id="contactForm">
+                        <div class="form-group half-width">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group half-width">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="project">Project Type</label>
+                            <select id="project" name="project">
+                                <option value="">Select a project type</option>
+                                <option value="portrait">Portrait Session</option>
+                                <!-- <option value="wedding">Wedding Photography</option> -->
+                                <!-- <option value="event">Event Photography</option> -->
+                                <option value="commercial">Commercial Work</option>
+                                <option value="print">Print Purchase</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="message">Tell Me About Your Vision</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Describe your project, timeline, preferred style, and any specific requirements. For print purchases, mention your preferred size and any framing needs..." required></textarea>
+                        </div>
+                        
+                        <!-- Hidden fields for Formspree -->
+                        <input type="hidden" name="_next" value="thank-you.html">
+                        <input type="hidden" name="_subject" value="New inquiry from Bisnak Studio website">
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <button type="submit" class="submit-button">
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <div class="contact-success" id="contactSuccess" style="display: none;">
+                        <h3>Thank you!</h3>
+                        <p>Your message has been sent. I'll get back to you within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Handle form submission for separate contact page
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const contactSuccess = document.getElementById('contactSuccess');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const submitButton = contactForm.querySelector('.submit-button');
+                    const originalText = submitButton.textContent;
+                    
+                    // Show loading state
+                    submitButton.textContent = 'Sending...';
+                    submitButton.disabled = true;
+                    
+                    try {
+                        const formData = new FormData(contactForm);
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            // Success - show thank you message
+                            contactForm.style.display = 'none';
+                            contactSuccess.style.display = 'block';
+                            
+                            // Reset form after 5 seconds
+                            setTimeout(() => {
+                                contactForm.style.display = 'block';
+                                contactSuccess.style.display = 'none';
+                                contactForm.reset();
+                                submitButton.textContent = originalText;
+                                submitButton.disabled = false;
+                            }, 5000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    } catch (error) {
+                        // Error handling
+                        alert('Sorry, there was an error sending your message. Please try again or email me directly at bisnak.studio@gmail.com');
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

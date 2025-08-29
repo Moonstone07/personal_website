@@ -1,0 +1,1036 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Custom Properties (Variables) */
+:root {
+    --primary-background: #fffce8;
+    --primary-text: #002369;
+    --secondary-text: #00143d;
+    --text-light: rgba(0, 35, 105, 0.8);
+    --text-muted: rgba(0, 35, 105, 0.6);
+    --text-hover: rgba(0, 35, 105, 0.7);
+    --shadow-color: rgba(0, 35, 105, 0.2);
+    --shadow-strong: rgba(0, 35, 105, 0.3);
+    --modal-overlay: rgba(0, 0, 0, 0.9);
+    --button-hover: rgba(0, 35, 105, 0.8);
+}
+
+/* Custom font loading */
+@font-face {
+    font-family: 'PPMonumentNormal';
+    src: url('fonts/PPMonumentNormal-Regular.woff2') format('woff2'),
+         url('fonts/PPMonumentNormal-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PPMonumentNormal';
+    src: url('fonts/PPMonumentNormal-Light.woff2') format('woff2'),
+         url('fonts/PPMonumentNormal-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PPMonumentNormal';
+    src: url('fonts/PPMonumentNormal-Black.woff2') format('woff2'),
+         url('fonts/PPMonumentNormal-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Inter', 'Arial', sans-serif;
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+    line-height: 1.6;
+}
+
+/* Fixed Header Styles */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 40px;
+        background: var(--primary-background);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-left, .nav-right {
+    flex: 1;
+}
+
+.nav-right {
+    text-align: right;
+}
+
+.nav-center {
+    flex: 2;
+    text-align: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--primary-text);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--text-hover);
+}
+
+.logo {
+    font-family: 'PPMonumentNormal', 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    line-height: 0.8;
+}
+
+.subtitle {
+    font-family: 'PPMonumentNormal', 'Playfair Display', serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+/* Main Content - Carousel */
+.main-content {
+    margin-top: 100px;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Hero Section */
+.hero-section {
+    width: 100%;
+    padding: 40px 40px 60px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--primary-text);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero-description {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 300;
+    font-size: .875rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Horizontal Carousel Container */
+.carousel-container {
+    width: 100%;
+    height: 75vh;
+    position: relative;
+    cursor: grab;
+    flex-grow: 1;
+}
+
+.carousel-container:active {
+    cursor: grabbing;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+/* Image Container */
+.image-container {
+    position: relative;
+    flex-shrink: 0;
+    width: 400px;
+    height: 100%;
+    margin-right: 30px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container:hover {
+    transform: translateY(-150px);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.image-container:last-child {
+    margin-right: 50px;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Portrait images should not be cropped - show full image */
+.carousel-image[src*="portraits/"] {
+    object-fit: contain;
+    background-color: var(--primary-background);
+}
+
+.image-container:hover .carousel-image {
+    transform: scale(1.1);
+}
+
+/* Image Description (simple text that appears ABOVE the image on hover) */
+.image-description {
+    position: absolute;
+    top: -20px; /* Positions it ABOVE the image */ 
+    left: -25px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    z-index: 10;
+    text-align: left;
+    padding: 15px;
+}
+
+.image-container:hover .image-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: var(--primary-background);
+    text-transform: uppercase;
+}
+
+
+/* Image Modal */
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-overlay);
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+.image-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 1200px;
+    /* width: 90%; */
+    height: 99vh;
+    max-height: 850px;
+    background-color: var(--primary-background);
+    overflow: visible;
+    box-shadow: 0 20px 60px var(--shadow-strong);
+    margin: 0 auto;
+}
+
+.modal-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-images {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-background);
+    height: 100%;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-image-large {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    padding: 20px;
+}
+
+.modal-image-large img {
+    max-width: 100%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-info {
+    background-color: var(--primary-background);
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal-text-content {
+    padding: 40px 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.modal-thumbnails {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    justify-content: flex-start;
+}
+
+.modal-image-small {
+    width: 100px;
+    height: 75px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-image-small:hover {
+    transform: translateY(-2px);
+}
+
+.modal-image-small img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 30px;
+    color: var(--text-muted);
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s ease;
+    background-color: var(--primary-background);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: var(--primary-text);
+    background-color: var(--primary-background);
+}
+
+.modal-title {
+    font-family: 'PPMonumentNormal', 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--primary-text);
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.modal-description {
+    color: var(--text-light);
+    margin-bottom: 30px;
+    line-height: 1.8;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.modal-details {
+    margin-bottom: 40px;
+}
+
+.print-info, .dimensions, .edition-info {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.edition-info {
+    color: var(--primary-text);
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Shopify Buy Button Container */
+#shopify-buy-button-container {
+    margin-top: 20px;
+}
+
+#shopify-buy-button-container .shopify-buy__btn {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Legacy Shopify Button (keeping for fallback) */
+.shopify-button {
+    background-color: var(--primary-text);
+    color: var(--primary-background);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.shopify-button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Section spacing adjustments */
+.featured-section,
+.work-section {
+    scroll-margin-top: 120px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    from { 
+        opacity: 0; 
+        transform: translateX(100px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+.image-container {
+    animation: slideInFromRight 0.8s ease forwards;
+}
+
+/* Contact Modal Styles */
+.contact-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--modal-overlay);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.contact-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.contact-modal-content {
+    background: var(--primary-background);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px var(--shadow-strong);
+}
+
+.contact-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary-text);
+    cursor: pointer;
+    z-index: 2001;
+    transition: color 0.3s ease;
+}
+
+.contact-modal-close:hover {
+    color: var(--text-hover);
+}
+
+.contact-form-container {
+    padding: 40px;
+}
+
+.contact-title {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: var(--primary-text);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.contact-subtitle {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--primary-text);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: 15px;
+    border: 2px solid transparent;
+    background: rgba(0, 35, 105, 0.05);
+    color: var(--primary-text);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-text);
+    background: rgba(0, 35, 105, 0.08);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.submit-button {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 18px 40px;
+    background: var(--primary-text);
+    color: var(--primary-background);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.contact-success {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.contact-success h3 {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--primary-text);
+    margin-bottom: 15px;
+}
+
+.contact-success p {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .fixed-header {
+        padding: 15px 20px;
+    }
+    
+    .main-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-left, .nav-right {
+        flex: none;
+    }
+    
+    .main-content {
+        margin-top: 160px;
+    }
+    
+    .carousel-container {
+        height: 60vh;
+    }
+    
+    .image-container {
+        width: 350px;
+        margin-right: 20px;
+    }
+    
+    .image-description {
+        top: -80px;
+        padding: 20px;
+        margin: 0 5px;
+    }
+    
+    .image-modal.show {
+        padding: 20px;
+    }
+    
+    .modal-content {
+        height: 90vh;
+        min-height: 600px;
+        width: 95%;
+    }
+    
+    .modal-layout {
+        grid-template-rows: 1.5fr 1fr;
+    }
+    
+    .modal-images {
+        padding: 20px;
+    }
+    
+    .modal-image-large {
+        flex: 1;
+    }
+    
+    .modal-image-small {
+        width: 70px;
+        height: 55px;
+    }
+    
+    .modal-thumbnails {
+        gap: 10px;
+        margin: 15px 0;
+    }
+    
+    .modal-info {
+        align-items: flex-start;
+    }
+    
+    .modal-text-content {
+        padding: 30px 25px;
+        justify-content: flex-start;
+    }
+    
+    .modal-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .modal-description {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    
+    .modal-details {
+        margin-bottom: 25px;
+    }
+    
+    /* Contact form mobile styles */
+    .contact-form-container {
+        padding: 30px 20px;
+    }
+    
+    .contact-title {
+        font-size: 2rem;
+    }
+    
+    .contact-subtitle {
+        font-size: 1rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px;
+    }
+    
+    .submit-button {
+        padding: 15px 30px;
+    }
+    
+    /* Featured and Work mobile styles */
+    .section-container {
+        padding: 0 20px;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .featured-grid,
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .work-filters {
+        gap: 10px;
+    }
+    
+    .filter-btn {
+        font-size: 0.8rem;
+        padding: 10px 20px;
+    }
+    
+    .featured-section,
+    .work-section {
+        padding: 60px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 50px;
+    }
+}
+
+/* Featured and Work Sections */
+.featured-section,
+.work-section {
+    padding: 100px 0;
+    background: var(--primary-background);
+}
+
+.work-section {
+    background: rgba(0, 35, 105, 0.02);
+}
+
+.section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-title {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 900;
+    font-size: 3.5rem;
+    color: var(--primary-text);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Featured Grid */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-item {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.featured-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.featured-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Portrait images should not be cropped in featured items */
+.featured-item img[src*="portraits/"] {
+    object-fit: contain;
+    background-color: var(--primary-background);
+}
+
+.featured-item:hover img {
+    transform: scale(1.05);
+}
+
+.featured-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 40px 30px 30px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.featured-item:hover .featured-overlay {
+    transform: translateY(0);
+}
+
+.featured-overlay h3 {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.featured-overlay p {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Work Section Filters */
+.work-filters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    padding: 12px 25px;
+    background: transparent;
+    color: var(--text-muted);
+    border: 2px solid var(--text-muted);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-text);
+    color: var(--primary-background);
+    border-color: var(--primary-text);
+}
+
+/* Work Grid */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.work-item {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.work-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Portrait images should not be cropped in work items */
+.work-item img[src*="portraits/"] {
+    object-fit: contain;
+    background-color: var(--primary-background);
+}
+
+.work-item:hover img {
+    transform: scale(1.03);
+}
+
+.work-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 35, 105, 0.8);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 20px;
+}
+
+.work-item:hover .work-overlay {
+    opacity: 1;
+}
+
+.work-overlay h3 {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.work-overlay p {
+    font-family: 'PPMonumentNormal', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Hidden class for filtering */
+.work-item.hidden {
+    display: none;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Section spacing adjustments */
+.featured-section {
+    scroll-margin-top: 120px;
+}
+
+.work-section {
+    scroll-margin-top: 120px;
+}
+
+

@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Bisnak Studio</title>
+    <link rel="stylesheet" href="carousel.css">
+    <style>
+        /* Work Page Specific Styles */
+        .work-page {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+            background: var(--primary-background);
+        }
+        
+        .work-hero {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 0 40px;
+        }
+        
+        .work-page-title {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 900;
+            font-size: 4rem;
+            color: var(--primary-text);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .work-page-subtitle {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 300;
+            font-size: 1.4rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .work-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 60px;
+        }
+        
+        /* Project List Sidebar */
+        .project-list-sidebar {
+            padding-top: 20px;
+        }
+        
+        .sidebar-title {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            color: var(--primary-text);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .project-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .project-list li {
+            margin-bottom: 15px;
+        }
+        
+        .project-list a {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            display: block;
+            line-height: 1.4;
+        }
+        
+        .project-list a:hover,
+        .project-list a.active {
+            color: var(--primary-text);
+        }
+        
+        .project-list a.active {
+            font-weight: 400;
+        }
+        
+        /* Current project indicator */
+        .project-list .current {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .project-list .current::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-text);
+        }
+        
+        /* Portfolio Grid Container */
+        .portfolio-container {
+            padding-top: 20px;
+        }
+        
+        /* Category Filters */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+        }
+        
+        .portfolio-filter-btn {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            padding: 15px 30px;
+            background: transparent;
+            color: var(--text-muted);
+            border: 2px solid var(--text-muted);
+            border-radius: 35px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .portfolio-filter-btn:hover,
+        .portfolio-filter-btn.active {
+            background: var(--primary-text);
+            color: var(--primary-background);
+            border-color: var(--primary-text);
+        }
+        
+        /* Portfolio Grid - Clean layout like reference */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 100px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Varied aspect ratios for visual interest */
+        .portfolio-item:nth-child(1) .portfolio-image-container {
+            aspect-ratio: 4/5;
+        }
+        
+        .portfolio-item:nth-child(2) .portfolio-image-container {
+            aspect-ratio: 3/4;
+        }
+        
+        .portfolio-item:nth-child(3) .portfolio-image-container {
+            aspect-ratio: 1/1;
+        }
+        
+        .portfolio-item:nth-child(4) .portfolio-image-container {
+            aspect-ratio: 4/3;
+        }
+        
+        .portfolio-item:nth-child(5) .portfolio-image-container {
+            aspect-ratio: 4/5;
+        }
+        
+        .portfolio-item:nth-child(6) .portfolio-image-container {
+            aspect-ratio: 3/4;
+        }
+        
+        .portfolio-image-container {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        /* Portrait images should not be cropped - show original composition */
+        .portfolio-item img[src*="portraits/"] {
+            object-fit: contain;
+            background-color: var(--primary-background);
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 30px 25px 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-category {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 400;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .portfolio-title {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: white;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        
+        .portfolio-description {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+        }
+        
+        /* Hidden class for filtering */
+        .portfolio-item.hidden {
+            display: none;
+        }
+        
+        /* Portfolio Stats */
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+            padding: 60px;
+            background: rgba(0, 35, 105, 0.02);
+            border-radius: 12px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: var(--primary-text);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Services Section */
+        .services-section {
+            text-align: center;
+            padding: 80px 40px;
+            background: rgba(0, 35, 105, 0.02);
+            border-radius: 12px;
+        }
+        
+        .services-title {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 400;
+            font-size: 2rem;
+            color: var(--primary-text);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .service-item {
+            text-align: center;
+        }
+        
+        .service-title {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: var(--primary-text);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .service-description {
+            font-family: 'PPMonumentNormal', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .work-page {
+                padding: 100px 0 60px;
+            }
+            
+            .work-hero,
+            .work-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 20px;
+            }
+            
+            .project-list-sidebar {
+                order: 2;
+                padding-top: 0;
+            }
+            
+            .portfolio-container {
+                order: 1;
+                padding-top: 0;
+            }
+            
+            .section-container {
+                padding: 0 20px;
+            }
+            
+            .work-page-title {
+                font-size: 2.8rem;
+            }
+            
+            .work-page-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .portfolio-filters {
+                gap: 15px;
+            }
+            
+            .portfolio-filter-btn {
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .portfolio-item:nth-child(1) .portfolio-image-container,
+            .portfolio-item:nth-child(2) .portfolio-image-container,
+            .portfolio-item:nth-child(3) .portfolio-image-container,
+            .portfolio-item:nth-child(4) .portfolio-image-container,
+            .portfolio-item:nth-child(5) .portfolio-image-container,
+            .portfolio-item:nth-child(6) .portfolio-image-container {
+                aspect-ratio: 4/5;
+            }
+            
+            .portfolio-stats {
+                padding: 40px 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .services-section {
+                padding: 60px 20px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header Navigation -->
+    <header class="fixed-header">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <a href="contact.html" class="nav-link">CONTACT</a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1 class="logo">Bisnak Studio<br><span class="subtitle">VISUAL STORYTELLING</span></h1>
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="featured.html" class="nav-link">FEATURED</a>
+                <a href="work.html" class="nav-link active">WORK</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Work Page Content -->
+    <main class="work-page">
+        <!-- <div class="work-hero">
+            <h1 class="work-page-title">Portfolio</h1>
+            <p class="work-page-subtitle">
+                A comprehensive collection of portrait photography spanning personal sessions, 
+                commercial projects, and artistic explorations. Each image represents a unique 
+                collaboration and story waiting to be told.
+            </p>
+        </div> -->
+        
+        <div class="work-content">
+            <!-- Project List Sidebar -->
+            <div class="project-list-sidebar">
+                <h3 class="sidebar-title">Categories</h3>
+                <ul class="project-list">
+                    <li><a href="#" data-category="portraits" class="filter-link">Portraits</a></li>
+                    <li><a href="#" data-category="architectural" class="filter-link">Architecture</a></li>
+                    <li><a href="#" data-category="urban" class="filter-link">Urban Life</a></li>
+                    <li><a href="#" data-category="nature" class="filter-link">Nature & Wildlife</a></li>
+                    <li><a href="#" data-category="landscape" class="filter-link">Landscapes</a></li>
+                    <li><a href="#" data-category="street" class="filter-link">Street Photography</a></li>
+                    <li><a href="#" data-category="fine-art" class="filter-link">Fine Art</a></li>
+                    <li><a href="#" data-category="all" class="filter-link current">View All</a></li>
+                </ul>
+            </div>
+            
+            <!-- Portfolio Container -->
+            <div class="portfolio-container">
+                <!-- Portfolio Grid -->
+                <div class="portfolio-grid">
+                    <!-- Portraits -->
+                    <div class="portfolio-item" data-category="portraits">
+                        <div class="portfolio-image-container">
+                            <img src="images/portraits/Ianna_01.jpg" alt="Portrait Photography - Ianna Session">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Portrait Photography</div>
+                                <h3 class="portfolio-title">Ianna Session</h3>
+                                <p class="portfolio-description">Professional portrait session</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="portraits">
+                        <div class="portfolio-image-container">
+                            <img src="images/portraits/barbara_portrait_01.jpg" alt="Portrait Photography - Barbara">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Portrait Photography</div>
+                                <h3 class="portfolio-title">Barbara Portrait</h3>
+                                <p class="portfolio-description">Contemporary portrait study</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="portraits">
+                        <div class="portfolio-image-container">
+                            <img src="images/portraits/ella_potrait_01.jpg" alt="Portrait Photography - Ella">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Portrait Photography</div>
+                                <h3 class="portfolio-title">Ella Portrait</h3>
+                                <p class="portfolio-description">Artistic portrait session</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="portraits">
+                        <div class="portfolio-image-container">
+                            <img src="images/portraits/sabrina_potrait_01.jpg" alt="Portrait Photography - Sabrina">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Portrait Photography</div>
+                                <h3 class="portfolio-title">Sabrina Portrait</h3>
+                                <p class="portfolio-description">Professional portrait with dramatic lighting</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="portraits">
+                        <div class="portfolio-image-container">
+                            <img src="images/portraits/camille_potrait_01.jpg" alt="Portrait Photography - Camille">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Portrait Photography</div>
+                                <h3 class="portfolio-title">Camille Portrait</h3>
+                                <p class="portfolio-description">Fine art portrait photography</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="portraits">
+                        <div class="portfolio-image-container">
+                            <img src="images/portraits/essielle_potrait_01.jpg" alt="Portrait Photography - Essielle">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Portrait Photography</div>
+                                <h3 class="portfolio-title">Essielle Portrait</h3>
+                                <p class="portfolio-description">Creative portrait session</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="portraits">
+                        <div class="portfolio-image-container">
+                            <img src="images/portraits/imene_potrait_01.jpg" alt="Portrait Photography - Imene">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Portrait Photography</div>
+                                <h3 class="portfolio-title">Imene Portrait</h3>
+                                <p class="portfolio-description">Artistic portrait composition</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="portraits">
+                        <div class="portfolio-image-container">
+                            <img src="images/portraits/malisa_potrait_01.jpg" alt="Portrait Photography - Malisa">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Portrait Photography</div>
+                                <h3 class="portfolio-title">Malisa Portrait</h3>
+                                <p class="portfolio-description">Professional portrait study</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Architecture -->
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Modern_glass_building_at_dusk.jpg" alt="Modern Glass Building at Dusk">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Glass at Dusk</h3>
+                                <p class="portfolio-description">Modern architecture in twilight</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Modern_black_building_with_blue_sky.jpg" alt="Modern Black Building with Blue Sky">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Black & Blue</h3>
+                                <p class="portfolio-description">Contemporary building design</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Skyscraper_building_with_blue_sky.jpg" alt="Skyscraper Building with Blue Sky">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Reaching Sky</h3>
+                                <p class="portfolio-description">Towering urban architecture</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Building_with_geometric_roof_design.jpg" alt="Building with Geometric Roof Design">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Geometric Forms</h3>
+                                <p class="portfolio-description">Architectural geometry study</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Modern_office_building_at_dusk.jpg" alt="Modern Office Building at Dusk">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Office Twilight</h3>
+                                <p class="portfolio-description">Commercial architecture at golden hour</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Modern_high_rise_building_at_night.jpg" alt="Modern High Rise Building at Night">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Night Tower</h3>
+                                <p class="portfolio-description">High-rise illuminated at night</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Apartment_building_with_balconies.jpg" alt="Apartment Building with Balconies">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Residential Lines</h3>
+                                <p class="portfolio-description">Apartment architecture with balcony patterns</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Church_building_with_green_roof.jpg" alt="Church Building with Green Roof">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Sacred Architecture</h3>
+                                <p class="portfolio-description">Historic church with distinctive green roof</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Tall_historic_building_with_trees_in_foreground.jpg" alt="Tall Historic Building with Trees">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Historic Tower</h3>
+                                <p class="portfolio-description">Historic architecture framed by nature</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="architectural">
+                        <div class="portfolio-image-container">
+                            <img src="images/Reflection_of_clouds_on_glass_building.jpg" alt="Reflection of Clouds on Glass Building">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Architectural Photography</div>
+                                <h3 class="portfolio-title">Sky Reflection</h3>
+                                <p class="portfolio-description">Clouds reflected in modern glass facade</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Urban Life -->
+                    <div class="portfolio-item" data-category="urban">
+                        <div class="portfolio-image-container">
+                            <img src="images/People_walking_on_street.jpg" alt="People Walking on Street">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Urban Photography</div>
+                                <h3 class="portfolio-title">City Flow</h3>
+                                <p class="portfolio-description">Urban life in motion</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="urban">
+                        <div class="portfolio-image-container">
+                            <img src="images/Woman_walking_towards_Walmart.jpg" alt="Woman Walking Towards Walmart">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Urban Photography</div>
+                                <h3 class="portfolio-title">Daily Routine</h3>
+                                <p class="portfolio-description">Everyday urban moments</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="urban">
+                        <div class="portfolio-image-container">
+                            <img src="images/Rainy_city_street_at_dusk.jpg" alt="Rainy City Street at Dusk">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Urban Photography</div>
+                                <h3 class="portfolio-title">Rainy Evening</h3>
+                                <p class="portfolio-description">Urban atmosphere in rain</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="urban">
+                        <div class="portfolio-image-container">
+                            <img src="images/City_skyline_with_illuminated_building.jpg" alt="City Skyline with Illuminated Building">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Urban Photography</div>
+                                <h3 class="portfolio-title">City Lights</h3>
+                                <p class="portfolio-description">Illuminated urban skyline</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="urban">
+                        <div class="portfolio-image-container">
+                            <img src="images/Cityscape_with_tall_buildings.jpg" alt="Cityscape with Tall Buildings">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Urban Photography</div>
+                                <h3 class="portfolio-title">Urban Landscape</h3>
+                                <p class="portfolio-description">Dense cityscape composition</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="urban">
+                        <div class="portfolio-image-container">
+                            <img src="images/City_buildings_and_trees.jpg" alt="City Buildings and Trees">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Urban Photography</div>
+                                <h3 class="portfolio-title">Urban Green</h3>
+                                <p class="portfolio-description">City buildings with natural elements</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="urban">
+                        <div class="portfolio-image-container">
+                            <img src="images/Foggy_skyscraper_in_city.jpg" alt="Foggy Skyscraper in City">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Urban Photography</div>
+                                <h3 class="portfolio-title">Misty Tower</h3>
+                                <p class="portfolio-description">Skyscraper emerging from fog</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="urban">
+                        <div class="portfolio-image-container">
+                            <img src="images/Traffic_light_and_overpass.jpg" alt="Traffic Light and Overpass">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Urban Photography</div>
+                                <h3 class="portfolio-title">Urban Infrastructure</h3>
+                                <p class="portfolio-description">City traffic systems and overpasses</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Nature & Wildlife -->
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Bee_on_purple_flower_in_garden.jpg" alt="Bee on Purple Flower in Garden">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Garden Pollinator</h3>
+                                <p class="portfolio-description">Bee pollinating purple flower</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Bird_flying_at_sunset.jpg" alt="Bird Flying at Sunset">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Sunset Flight</h3>
+                                <p class="portfolio-description">Bird silhouette against golden sky</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Butterfly_on_orange_flower.jpg" alt="Butterfly on Orange Flower">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Butterfly Garden</h3>
+                                <p class="portfolio-description">Delicate butterfly on vibrant bloom</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Duck_swimming_on_water.jpg" alt="Duck Swimming on Water">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Peaceful Waters</h3>
+                                <p class="portfolio-description">Duck gliding through calm water</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Ladybug_on_grass_blade.jpg" alt="Ladybug on Grass Blade">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Tiny Explorer</h3>
+                                <p class="portfolio-description">Macro shot of ladybug on grass</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/White_butterfly_on_tree_trunk.jpg" alt="White Butterfly on Tree Trunk">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Tree Visitor</h3>
+                                <p class="portfolio-description">White butterfly resting on bark</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Beetle_on_lavender_flower.jpg" alt="Beetle on Lavender Flower">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Lavender Visitor</h3>
+                                <p class="portfolio-description">Beetle exploring lavender bloom</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Clover with a Ladybug.jpg" alt="Clover with Ladybug">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Lucky Find</h3>
+                                <p class="portfolio-description">Ladybug on clover leaf</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Bird_flying_in_sky.jpg" alt="Bird Flying in Sky">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Freedom Flight</h3>
+                                <p class="portfolio-description">Bird soaring through open sky</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Butterfly_on_plant_with_purple_flowers.jpg" alt="Butterfly on Plant with Purple Flowers">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Purple Blooms</h3>
+                                <p class="portfolio-description">Butterfly among purple flowers</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Duck_landing_on_water_at_sunset.jpg" alt="Duck Landing on Water at Sunset">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Sunset Landing</h3>
+                                <p class="portfolio-description">Duck touching down at golden hour</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-image-container">
+                            <img src="images/Ducks_swimming_by_river_at_dusk.jpg" alt="Ducks Swimming by River at Dusk">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Nature Photography</div>
+                                <h3 class="portfolio-title">Evening Swim</h3>
+                                <p class="portfolio-description">Ducks in river during twilight</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Landscapes -->
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Sunset_over_calm_lake_with_trees.jpg" alt="Sunset Over Calm Lake with Trees">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Lake Serenity</h3>
+                                <p class="portfolio-description">Golden sunset over peaceful lake</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Island_in_calm_water_at_sunset.jpg" alt="Island in Calm Water at Sunset">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Island Sunset</h3>
+                                <p class="portfolio-description">Solitary island at golden hour</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Bridge_over_water_at_dusk.jpg" alt="Bridge Over Water at Dusk">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Evening Bridge</h3>
+                                <p class="portfolio-description">Bridge silhouette at twilight</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Sunset_over_river_with_clouds.jpg" alt="Sunset Over River with Clouds">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">River Sunset</h3>
+                                <p class="portfolio-description">Dramatic clouds over river at dusk</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Large_Ferris_wheel_in_city_park.jpg" alt="Large Ferris Wheel in City Park">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Park Landmark</h3>
+                                <p class="portfolio-description">Ferris wheel in urban park setting</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Colorful_sunset_sky_over_buildings.jpg" alt="Colorful Sunset Sky Over Buildings">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Urban Sunset</h3>
+                                <p class="portfolio-description">Vibrant sky over city buildings</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Colorful_sunset_sky_with_clouds.jpg" alt="Colorful Sunset Sky with Clouds">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Cloud Symphony</h3>
+                                <p class="portfolio-description">Dramatic sunset cloudscape</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Bridge_and_streetlamp_silhouette.jpg" alt="Bridge and Streetlamp Silhouette">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Evening Silhouettes</h3>
+                                <p class="portfolio-description">Bridge and lamp against twilight sky</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/River_with_bridge_and_clouds.jpg" alt="River with Bridge and Clouds">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">River Crossing</h3>
+                                <p class="portfolio-description">Bridge over river with dramatic sky</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Empty_tennis_court_at_sunset.jpg" alt="Empty Tennis Court at Sunset">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Court at Sunset</h3>
+                                <p class="portfolio-description">Tennis court in golden hour light</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Fisherman_on_boat_at_sunset.jpg" alt="Fisherman on Boat at Sunset">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Evening Fishing</h3>
+                                <p class="portfolio-description">Solitary fisherman at sunset</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="landscape">
+                        <div class="portfolio-image-container">
+                            <img src="images/Man_standing_by_water_at_sunset.jpg" alt="Man Standing by Water at Sunset">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Landscape Photography</div>
+                                <h3 class="portfolio-title">Waterside Contemplation</h3>
+                                <p class="portfolio-description">Figure silhouetted against water at dusk</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Street Photography -->
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Person_sitting_on_bench_with_phone.jpg" alt="Person Sitting on Bench with Phone">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Digital Age</h3>
+                                <p class="portfolio-description">Modern life moment</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Cyclist_riding_towards_building_entrance.jpg" alt="Cyclist Riding Towards Building Entrance">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Urban Transit</h3>
+                                <p class="portfolio-description">City commuter in motion</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Person_walking_dog_in_alley.jpg" alt="Person Walking Dog in Alley">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Alley Walk</h3>
+                                <p class="portfolio-description">Quiet neighborhood moment</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Two_people_walking_outdoors.jpg" alt="Two People Walking Outdoors">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Urban Stroll</h3>
+                                <p class="portfolio-description">Pair walking through city</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Woman_walking_past_flower_shop.jpg" alt="Woman Walking Past Flower Shop">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Flower Shop</h3>
+                                <p class="portfolio-description">Street scene with local business</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Person_standing_near_building.jpg" alt="Person Standing Near Building">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Urban Observer</h3>
+                                <p class="portfolio-description">Person in architectural context</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Seagull_on_building_roof.jpg" alt="Seagull on Building Roof">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Rooftop Resident</h3>
+                                <p class="portfolio-description">Urban wildlife on building</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Two_pigeons_on_sandy_ground.jpg" alt="Two Pigeons on Sandy Ground">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">City Birds</h3>
+                                <p class="portfolio-description">Pigeons in urban environment</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Pigeon_walking_on_pavement.jpg" alt="Pigeon Walking on Pavement">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Pavement Walker</h3>
+                                <p class="portfolio-description">Pigeon navigating city streets</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Dog_looking_at_trash_cans.jpg" alt="Dog Looking at Trash Cans">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Urban Curiosity</h3>
+                                <p class="portfolio-description">Dog investigating city objects</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Person_walking_down_alleyway.jpg" alt="Person Walking Down Alleyway">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Alley Journey</h3>
+                                <p class="portfolio-description">Solitary figure in urban passage</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="street">
+                        <div class="portfolio-image-container">
+                            <img src="images/Seagull_in_parking_lot.jpg" alt="Seagull in Parking Lot">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Street Photography</div>
+                                <h3 class="portfolio-title">Parking Lot Visitor</h3>
+                                <p class="portfolio-description">Seagull in urban parking area</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Fine Art -->
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Single_daisy_flower_in_focus.jpg" alt="Single Daisy Flower in Focus">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Daisy Study</h3>
+                                <p class="portfolio-description">Minimalist floral composition</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Sunlight_shadows_on_concrete_wall.jpg" alt="Sunlight Shadows on Concrete Wall">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Light & Shadow</h3>
+                                <p class="portfolio-description">Abstract play of natural light</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Empty_staircase_with_shadow.jpg" alt="Empty Staircase with Shadow">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Geometric Solitude</h3>
+                                <p class="portfolio-description">Architectural minimalism</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/White_gardenia_flower_with_dark_background.jpg" alt="White Gardenia Flower with Dark Background">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Gardenia Elegance</h3>
+                                <p class="portfolio-description">Classic floral study with dramatic contrast</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Single_yellow_flower_in_focus.jpg" alt="Single Yellow Flower in Focus">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Yellow Bloom</h3>
+                                <p class="portfolio-description">Bright floral macro study</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Purple_flower_with_green_background.jpg" alt="Purple Flower with Green Background">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Purple Study</h3>
+                                <p class="portfolio-description">Color contrast floral composition</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Close_up_of_purple_flowers.jpg" alt="Close Up of Purple Flowers">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Purple Cluster</h3>
+                                <p class="portfolio-description">Macro floral arrangement</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Peony in Bloom.jpg" alt="Peony in Bloom">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Peony Elegance</h3>
+                                <p class="portfolio-description">Classic floral fine art study</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Pink_roses_with_green_leaves.jpg" alt="Pink Roses with Green Leaves">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Rose Garden</h3>
+                                <p class="portfolio-description">Delicate pink roses with natural framing</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Red_rose_flower_with_green_leaves.jpg" alt="Red Rose Flower with Green Leaves">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Red Rose Study</h3>
+                                <p class="portfolio-description">Classic red rose with natural composition</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Concrete_structure_with_light_beams.jpg" alt="Concrete Structure with Light Beams">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Light Beams</h3>
+                                <p class="portfolio-description">Abstract architectural light study</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Concrete_structure_with_shadows.jpg" alt="Concrete Structure with Shadows">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Shadow Play</h3>
+                                <p class="portfolio-description">Geometric shadow composition</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Sunlight_through_window_shadows.jpg" alt="Sunlight Through Window Shadows">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Window Light</h3>
+                                <p class="portfolio-description">Natural light through architectural forms</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Ceiling_with_horizontal_lights_in_black_and_white.jpg" alt="Ceiling with Horizontal Lights in Black and White">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Linear Lights</h3>
+                                <p class="portfolio-description">Monochrome architectural abstraction</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Wildflower on a Track.jpg" alt="Wildflower on Track">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Track Wildflower</h3>
+                                <p class="portfolio-description">Nature persisting in urban infrastructure</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="fine-art">
+                        <div class="portfolio-image-container">
+                            <img src="images/Withered_plant_in_field.jpg" alt="Withered Plant in Field">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-category">Fine Art Photography</div>
+                                <h3 class="portfolio-title">Seasonal Change</h3>
+                                <p class="portfolio-description">Study of natural cycles and decay</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Portfolio filtering functionality via sidebar
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterLinks = document.querySelectorAll('.filter-link');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove current class from all links
+                    filterLinks.forEach(l => l.classList.remove('current'));
+                    
+                    // Add current class to clicked link
+                    link.classList.add('current');
+                    
+                    // Get filter value
+                    const filter = link.getAttribute('data-category');
+                    
+                    // Filter portfolio items
+                    portfolioItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        
+                        if (filter === 'all' || category === filter) {
+                            item.classList.remove('hidden');
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            
+                            // Animate in with delay
+                            setTimeout(() => {
+                                item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(-20px)';
+                            
+                            setTimeout(() => {
+                                item.classList.add('hidden');
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
